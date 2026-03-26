@@ -21,32 +21,54 @@ export const Hero = () => {
           priority 
         />
 
+        {/* Hero Vignette Overlay for better text legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+
         {/* Hero Content Overlay - Bottom Center */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end px-6 pb-16 md:pb-24 pointer-events-none">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end px-6 pb-20 md:pb-32 pointer-events-none">
           <motion.div 
-            className="max-w-5xl text-center pointer-events-auto"
-            initial={{ opacity: 0, y: 40 }}
+            className="max-w-5xl text-center pointer-events-auto flex flex-col items-center"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="font-serif text-4xl font-bold leading-tight text-white sm:text-6xl md:text-8xl lg:text-9xl drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
+            {/* Elegant Eyebrow */}
+            <motion.span 
+              className="inline-flex items-center gap-3 mb-6 text-white/90 font-sans text-[10px] md:text-xs font-bold uppercase tracking-[0.4em]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1.2 }}
+            >
+              <span className="w-12 h-[1px] bg-white/50 inline-block" />
+              Welcome to the Magic
+              <span className="w-12 h-[1px] bg-white/50 inline-block" />
+            </motion.span>
+
+            {/* Cinematic Headline */}
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] text-white drop-shadow-lg tracking-tight">
               Begin your<br/>
-              Journey now<br/>
-              <span className="block mt-2 md:mt-4 drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
-                with <BrandText className="font-normal text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] text-[#fae1d2]">Touta</BrandText>
+              journey with<br/>
+              <span className="block mt-4 drop-shadow-xl">
+                <BrandText className="text-[5.5rem] md:text-[8rem] lg:text-[11rem] leading-none text-[#fae1d2]">Touta</BrandText>
               </span>
             </h1>
             
+            {/* Luxury Primary Button */}
             <motion.div
-              className="mt-8 md:mt-12 flex justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="mt-12 md:mt-16 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
                 href="#about-touta"
-                className="inline-block rounded-full bg-white px-8 py-4 md:px-14 md:py-6 font-sans text-base md:text-xl font-bold text-[#e27d60] shadow-2xl transition-all hover:scale-105"
+                className="group relative inline-flex items-center justify-center rounded-full bg-white px-10 py-4 md:px-12 md:py-5 font-sans text-sm md:text-base font-bold text-[#e27d60] shadow-xl shadow-[#e27d60]/10 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#e27d60]/20 active:scale-95"
               >
-                Start Your Journey
+                <span>Start Exploring</span>
+                <span className="absolute right-6 opacity-0 translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                  →
+                </span>
+                <span className="transition-all duration-300 group-hover:pr-6" /> {/* Spacer trick */}
               </Link>
             </motion.div>
           </motion.div>

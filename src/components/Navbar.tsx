@@ -41,18 +41,18 @@ export const Navbar = ({ variant = "solid" }: NavbarProps) => {
     >
       {/* Logo Area (Icon Only) */}
       <Link href="/" className="flex items-center gap-2 cursor-pointer z-[110]">
-        <div className={`h-12 w-12 rounded-full overflow-hidden flex items-center justify-center relative border transition-colors ${
-          isSolid ? "bg-white border-gray-100 shadow-sm" : "bg-white/10 backdrop-blur-sm border-white/20 shadow-lg"
+        <div className={`h-12 w-12 rounded-full overflow-hidden flex items-center justify-center relative transition-all duration-500 hover:scale-105 ${
+          isSolid ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md" : "bg-white/10 backdrop-blur-md border border-white/20 shadow-xl"
         }`}>
           <Image src="/logo.png" alt="Touta Logo" fill className="object-cover" />
         </div>
       </Link>
 
       {/* Desktop Links */}
-      <div className={`hidden md:flex gap-8 font-sans text-xs font-bold uppercase tracking-widest px-8 py-3 rounded-full border transition-all duration-300 z-[110] ${
+      <div className={`hidden md:flex gap-8 font-sans text-xs font-bold uppercase tracking-[0.2em] px-8 py-3.5 rounded-full transition-all duration-500 z-[110] ${
         isSolid 
-          ? "text-gray-600 bg-gray-50/50 border-gray-100" 
-          : "text-white/90 bg-white/10 backdrop-blur-sm border-white/20 shadow-lg"
+          ? "text-gray-600 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md" 
+          : "text-white/90 bg-white/10 backdrop-blur-md border border-white/20 shadow-xl"
       }`}>
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
@@ -80,10 +80,10 @@ export const Navbar = ({ variant = "solid" }: NavbarProps) => {
 
       {/* Mobile Hamburger Button */}
       <button
-        className={`md:hidden flex flex-col justify-center items-center w-12 h-12 rounded-full transition-all duration-300 border flex-shrink-0 z-[110] ${
+        className={`md:hidden flex flex-col justify-center items-center w-12 h-12 rounded-full transition-all duration-500 flex-shrink-0 z-[110] ${
           isSolid 
-            ? "bg-white border-gray-100 shadow-sm" 
-            : "bg-white/10 backdrop-blur-sm border-white/20 shadow-lg"
+            ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md" 
+            : "bg-white/10 backdrop-blur-md border border-white/20 shadow-xl"
         }`}
         onClick={() => setMenuOpen((prev) => !prev)}
         aria-label="Toggle menu"

@@ -276,16 +276,18 @@ function ShopContent() {
           className="relative z-10 max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="inline-flex items-center gap-2 mb-6 text-[#e8a87c] font-sans font-bold uppercase tracking-widest text-sm">
-            <span className="w-8 h-[2px] bg-[#e8a87c] inline-block" />
+          {/* Eyebrow */}
+          <span className="inline-flex items-center gap-3 mb-6 text-[#e8a87c] font-sans font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
+            <span className="w-10 h-[1px] bg-[#e8a87c]/50 inline-block" />
             Collection
+            <span className="w-10 h-[1px] bg-[#e8a87c]/50 inline-block" />
           </span>
-          <h1 className="font-serif text-6xl md:text-7xl font-bold text-gray-900 mb-6">
-            Shop with <BrandText className="text-[#e27d60]">Touta</BrandText>
+          <h1 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] mb-6 leading-tight tracking-tight">
+            Shop with <BrandText className="text-[#e27d60] text-[4rem] md:text-[6rem] leading-none">Touta</BrandText>
           </h1>
-          <p className="font-sans text-xl text-gray-600 leading-relaxed">
+          <p className="font-sans text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto">
             Curated treasures designed to spark imagination and bring the magic of learning into your home.
           </p>
         </motion.div>
@@ -318,10 +320,11 @@ function ShopContent() {
               <motion.div
                 key={product.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="group rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="group rounded-[2.5rem] overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col"
               >
                 {/* Product Image */}
                 <div className={`relative w-full aspect-[5/4] ${product.bg} flex items-center justify-center overflow-hidden`}>
@@ -329,16 +332,16 @@ function ShopContent() {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain p-10 group-hover:scale-105 transition-transform duration-500"
+                    className="object-contain p-10 group-hover:scale-110 group-hover:drop-shadow-2xl transition-all duration-700 ease-[0.16,1,0.3,1]"
                   />
-                  <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#111] shadow-sm">
+                  <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-[#111] shadow-sm">
                     {product.category}
                   </div>
                 </div>
 
                 {/* Product Info */}
-                <div className="p-8 flex flex-col flex-1">
-                  <h2 className="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#e27d60] transition-colors">
+                <div className="p-8 md:p-10 flex flex-col flex-1">
+                  <h2 className="font-serif text-2xl md:text-3xl font-medium text-[#1a1a1a] mb-4 group-hover:text-[#e27d60] transition-colors leading-tight tracking-tight">
                     {product.name.split("Touta").map((part, i, arr) => (
                       <span key={i}>
                         {part}
@@ -346,12 +349,12 @@ function ShopContent() {
                       </span>
                     ))}
                   </h2>
-                  <p className="font-sans text-base text-gray-500 leading-relaxed mb-6 italic border-l-2 border-[#c2c384]/30 pl-4">{product.slogan}</p>
-                  <div className="mt-auto flex items-center justify-between">
-                    <span className="font-serif text-3xl font-bold text-gray-900">{product.price} <span className="text-sm">EGP</span></span>
+                  <p className="font-sans text-base text-gray-500 leading-relaxed mb-8 italic font-light border-l border-[#c2c384]/40 pl-5">{product.slogan}</p>
+                  <div className="mt-auto flex items-center justify-between pt-4">
+                    <span className="font-serif text-3xl font-medium text-[#1a1a1a]">{product.price} <span className="text-sm text-gray-400 font-sans tracking-widest">EGP</span></span>
                     <button
                       onClick={() => addToCart(product)}
-                      className="rounded-full bg-gray-900 px-8 py-3 font-sans text-sm font-bold text-white transition-all hover:bg-[#e27d60] active:scale-95 shadow-lg"
+                      className="rounded-full bg-gray-900 px-8 py-3.5 font-sans text-xs md:text-sm font-bold text-white transition-all duration-300 hover:bg-[#e27d60] hover:scale-[1.03] active:scale-95 shadow-xl hover:shadow-[#e27d60]/30"
                     >
                       Add to Cart
                     </button>

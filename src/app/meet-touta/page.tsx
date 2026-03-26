@@ -58,18 +58,18 @@ export default function MeetToutaPage() {
           className="relative z-10 max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Mascot */}
           <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-8">
-            <Image src="/mascot-peeking.png" alt="Touta mascot" fill className="object-contain drop-shadow-xl" />
+            <Image src="/mascot-peeking.png" alt="Touta mascot" fill className="object-contain drop-shadow-2xl" />
           </div>
 
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] leading-tight tracking-tight mb-6">
             The Story of{" "}
-            <BrandText className="text-[#e27d60] text-6xl md:text-8xl">Touta</BrandText>
+            <BrandText className="text-[#e27d60] text-[4rem] md:text-[6rem] leading-none">Touta</BrandText>
           </h1>
-          <p className="font-sans text-xl text-gray-600 leading-relaxed">
+          <p className="font-sans text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto">
             A digital story about a magical companion who makes every learning moment feel like an adventure.
           </p>
         </motion.div>
@@ -81,28 +81,29 @@ export default function MeetToutaPage() {
           {storyChapters.map((chapter, idx) => (
             <motion.div
               key={chapter.id}
-              className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-16`}
-              initial={{ opacity: 0, y: 60 }}
+              className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-20`}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Image */}
-              <div className="flex-1 relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl"
-                style={{ boxShadow: `0 30px 80px ${chapter.accent}40` }}>
+              <div className="flex-1 relative w-full aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+                style={{ boxShadow: `0 30px 80px ${chapter.accent}30` }}>
                 <Image src={chapter.image} alt={chapter.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
               </div>
 
               {/* Text */}
               <div className="flex-1 text-left">
                 <span
-                  className="inline-block font-sans font-bold uppercase tracking-widest text-sm mb-4"
+                  className="inline-flex items-center gap-3 font-sans font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6"
                   style={{ color: chapter.accent }}
                 >
+                  <span className="w-8 h-[1px]" style={{ backgroundColor: chapter.accent }} />
                   Chapter {chapter.id}
                 </span>
-                <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                <h2 className="font-serif text-4xl md:text-5xl font-medium text-[#1a1a1a] mb-6 leading-tight tracking-tight">
                   {chapter.title.split("Touta").map((part, i, arr) => (
                     <span key={i}>
                       {part}
@@ -110,7 +111,7 @@ export default function MeetToutaPage() {
                     </span>
                   ))}
                 </h2>
-                <p className="font-sans text-lg text-gray-600 leading-relaxed">
+                <p className="font-sans text-lg md:text-xl text-gray-600 leading-relaxed font-light">
                   {chapter.text}
                 </p>
               </div>
@@ -120,25 +121,29 @@ export default function MeetToutaPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="w-full py-32 text-center bg-gradient-to-br from-[#c2c384] to-[#aeb073] px-6">
+      <section className="w-full py-40 text-center bg-gradient-to-br from-[#c2c384] to-[#aeb073] px-6">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mx-auto"
         >
-          <h2 className="font-serif text-5xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="font-serif text-5xl md:text-7xl font-medium text-white mb-8 leading-tight tracking-tight drop-shadow-sm">
             Ready to explore <BrandText className="text-[#fae1d2]">Touta</BrandText>&apos;s World?
           </h2>
-          <p className="font-sans text-lg text-white/80 mb-12">
+          <p className="font-sans text-lg md:text-xl text-white/90 mb-14 font-light max-w-xl mx-auto">
             Discover our magical collection of notebooks, puzzles, pins, and coloring books.
           </p>
           <Link
-            href="/"
-            className="inline-block rounded-full bg-white px-14 py-6 font-sans text-xl font-bold text-[#e27d60] shadow-2xl hover:scale-105 transition-transform"
+            href="/shop"
+            className="group relative inline-flex items-center justify-center rounded-full bg-white px-12 py-5 font-sans text-sm md:text-base font-bold text-[#e27d60] shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/20 active:scale-95"
           >
-            Explore the Collection ✨
+            <span>Explore the Collection</span>
+            <span className="absolute right-6 opacity-0 translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+              →
+            </span>
+            <span className="transition-all duration-300 group-hover:pr-6" />
           </Link>
         </motion.div>
       </section>

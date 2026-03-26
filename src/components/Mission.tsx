@@ -11,23 +11,23 @@ export const Mission = () => {
            initial={{ opacity: 0, scale: 0.95 }}
            whileInView={{ opacity: 1, scale: 1 }}
            viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-serif text-4xl font-medium leading-relaxed text-[#111111] md:text-5xl lg:text-6xl italic">
             &quot;If we were still kids,<br/>
             <BrandText className="text-white not-italic">Touta</BrandText> would be the place where<br/>
-            <span className="font-script text-6xl md:text-7xl lg:text-8xl not-italic ml-4 text-white">learning felt like magic.</span>&quot;
+            <span className="font-script text-6xl md:text-7xl lg:text-8xl not-italic ml-4 text-white drop-shadow-sm">learning felt like magic.</span>&quot;
           </h2>
         </motion.div>
       </div>
 
       {/* Decorative Mascot Peeking Element */}
       <motion.div 
-        className="absolute bottom-0 right-10 md:right-32 w-48 h-48 flex flex-col items-center justify-center"
+        className="absolute bottom-0 right-10 md:right-32 w-48 h-48 flex flex-col items-center justify-center opacity-90"
         initial={{ y: 200 }}
         whileInView={{ y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         <Image src="/mascot-peeking.png" alt="Touta Mascot Peeking" fill className="object-contain" />
       </motion.div>
