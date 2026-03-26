@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sage: #c2c384;
+  --color-sage-hover: #aeb073;
+  --color-terracotta: #e27d60; /* Added warm accent */
+  --color-sand: #e8a87c; /* Added warm accent */
+  
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-foreground: #2d3748;
+  
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
+  --font-script: var(--font-dancing);
+  --font-have-heart: var(--font-dancing);
+  --font-brand: var(--font-have-heart);
+}
+
+.font-brand {
+  font-family: var(--font-have-heart);
+}
+
+:root {
+  --background: #fafafa;
+  --foreground: #2d3748;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
