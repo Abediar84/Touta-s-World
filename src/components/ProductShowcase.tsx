@@ -116,18 +116,18 @@ export default function ProductShowcase() {
             <Link href="/shop" className="block group">
               <div className={`relative bg-white rounded-[2rem] p-8 border border-stone-100 ${product.hoverColor} transition-all duration-700 flex flex-col items-center text-center h-full hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2`}>
                 
-                {/* Image Container with Peeling Effect */}
-                <div className="w-full aspect-square relative bg-stone-50 rounded-2xl mb-8 overflow-hidden">
+                {/* Image Container */}
+                <div className="w-full aspect-[4/5] relative bg-stone-50 rounded-2xl mb-8 overflow-hidden">
                   <motion.div
                     className="w-full h-full relative"
-                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    whileHover={{ scale: 1.05, rotate: 1 }}
                     transition={{ duration: 0.8, ease: cinemaEase }}
                   >
                     <Image 
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover transition-all duration-1000" 
+                      className="object-contain p-6 transition-all duration-1000" 
                     />
                   </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

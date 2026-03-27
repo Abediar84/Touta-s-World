@@ -354,7 +354,7 @@ function ShopContent() {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-contain p-12 transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
+                      className="object-contain p-8 transition-transform duration-1000 group-hover:scale-105"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                    {/* Add to Cart Floating Button */}
