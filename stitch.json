@@ -1,0 +1,28 @@
+{
+  "projectId": "5359184052213174640",
+  "projectUrl": "https://stitch.withgoogle.com/project/5359184052213174640",
+  "designSystemId": "assets/43bc48a09c064cc6b4828257fd94b61e",
+  "designSystemName": "Sunlit Heirloom",
+  "screens": {
+    "brandedHomepage": {
+      "id": "a0e89ce5b0214c6b90f7e16d164a0fe3",
+      "title": "Touta's World - Branded Homepage",
+      "htmlDownloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzFkODc3NWI3MDY5YjRiZDhiNjQxYWZkZWU3NGMwMmNiEgsSBxCN-rbtgQkYAZIBIwoKcHJvamVjdF9pZBIVQhM1MzU5MTg0MDUyMjEzMTc0NjQw&filename=&opi=96797242"
+    },
+    "homepage": {
+      "id": "edd88e94b7b04eceb5358204acfa7e77",
+      "title": "Touta's World - Homepage",
+      "htmlDownloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzQ5ODE0ZThiZTgwODRjYzBhOWJlMGEzNmRjZTE1ZGZlEgsSBxCN-rbtgQkYAZIBIwoKcHJvamVjdF9pZBIVQhM1MzU5MTg0MDUyMjEzMTc0NjQw&filename=&opi=96797242"
+    },
+    "meetTouta": {
+      "id": "99d2a8b454d740f9b7404caa73ae6381",
+      "title": "Meet Touta - Our Story",
+      "htmlDownloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2QwMDVhNjA4YjVlMzRhYjZiMDhlYmFlZjI0MjFkNGZjEgsSBxCN-rbtgQkYAZIBIwoKcHJvamVjdF9pZBIVQhM1MzU5MTg0MDUyMjEzMTc0NjQw&filename=&opi=96797242"
+    },
+    "shop": {
+      "id": "aeb251b732c34c9cb2306363e3506d2c",
+      "title": "Touta's World - Shop The Collection",
+      "htmlDownloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2VkYmVkMzRiMWU2NzRlMzM5NzM4YjdkNjMzMzM3ZmEwEgsSBxCN-rbtgQkYAZIBIwoKcHJvamVjdF9pZBIVQhM1MzU5MTg0MDUyMjEzMTc0NjQw&filename=&opi=96797242"
+    }
+  }
+}

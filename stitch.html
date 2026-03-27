@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Touta's World | An Ethereal Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#dbc1ba",
+              "surface-variant": "#e4e2de",
+              "tertiary-container": "#8e99af",
+              "surface": "#fbf9f5",
+              "tertiary-fixed": "#d8e3fb",
+              "surface-container-low": "#f5f3ef",
+              "surface-dim": "#dbdad6",
+              "surface-container-highest": "#e4e2de",
+              "on-primary-container": "#5d1904",
+              "inverse-primary": "#ffb5a0",
+              "secondary-fixed": "#e6e6a4",
+              "on-surface-variant": "#55433d",
+              "on-tertiary-fixed-variant": "#3c475a",
+              "on-secondary-fixed-variant": "#484917",
+              "surface-tint": "#99452c",
+              "on-secondary-fixed": "#1c1d00",
+              "on-primary-fixed": "#3b0900",
+              "on-error-container": "#93000a",
+              "surface-container": "#efeeea",
+              "secondary": "#60612c",
+              "on-secondary-container": "#646630",
+              "on-tertiary-container": "#263143",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-bright": "#fbf9f5",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e3e4a2",
+              "on-surface": "#1b1c1a",
+              "surface-container-high": "#eae8e4",
+              "on-primary-fixed-variant": "#7b2e17",
+              "on-tertiary-fixed": "#111c2d",
+              "inverse-on-surface": "#f2f0ed",
+              "primary-container": "#e27d60",
+              "outline": "#88726c",
+              "background": "#fbf9f5",
+              "error": "#ba1a1a",
+              "on-background": "#1b1c1a",
+              "secondary-fixed-dim": "#c9ca8b",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#30312e",
+              "primary": "#99452c",
+              "primary-fixed-dim": "#ffb5a0",
+              "tertiary": "#545f73",
+              "tertiary-fixed-dim": "#bcc7de",
+              "primary-fixed": "#ffdbd1"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f5;
+            color: #1b1c1a;
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-italic { font-family: 'Noto Serif'; font-style: italic; }
+        .glass-nav {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Glassmorphism Shell) -->
+<nav class="bg-white/70 dark:bg-stone-900/70 backdrop-blur-2xl rounded-full mt-6 mx-auto w-[90%] max-w-7xl sticky top-6 z-50 flex justify-between items-center px-10 py-4 shadow-[0_32px_64px_-4px_rgba(27,28,26,0.06)]">
+<div class="text-2xl font-serif italic text-[#E27D60] dark:text-[#ef9a81]">
+            Touta's World
+        </div>
+<div class="hidden md:flex items-center gap-10 font-['Noto_Serif'] font-light tracking-tight">
+<a class="text-[#99452c] dark:text-white border-b-2 border-[#E27D60] pb-1 hover:scale-105 transition-transform duration-300" href="#">Archives</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#E27D60] transition-colors hover:scale-105 transition-transform duration-300" href="#">The World</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#E27D60] transition-colors hover:scale-105 transition-transform duration-300" href="#">Curations</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#E27D60] transition-colors hover:scale-105 transition-transform duration-300" href="#">Chronicles</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-label text-sm font-semibold tracking-wide hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_12px_24px_-4px_rgba(153,69,44,0.2)]">
+            Join the Archive
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="max-w-7xl mx-auto px-8 md:px-20 mt-24 mb-32">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<!-- Left Column Content -->
+<div class="flex flex-col items-start gap-8 order-2 md:order-1">
+<div class="inline-block">
+<span class="font-label text-secondary font-bold tracking-[0.2em] text-xs uppercase">WELCOME TO THE MAGIC</span>
+<div class="h-0.5 w-12 bg-secondary mt-2 opacity-30"></div>
+</div>
+<h1 class="font-headline text-5xl md:text-[4.5rem] leading-[1.1] font-light text-on-background tracking-tight">
+                    Begin your <br/>journey with <span class="serif-italic text-primary">Touta</span>
+</h1>
+<p class="font-body text-lg text-on-surface-variant/80 max-w-md leading-relaxed">
+                    A curated digital sanctuary where Egyptian heritage meets modern curiosity. We craft experiences that invite children to explore the echoes of the past through the lens of wonder.
+                </p>
+<button class="bg-on-background text-surface px-10 py-4 rounded-full font-label font-semibold hover:bg-primary transition-colors duration-500 group flex items-center gap-3">
+                    Start Exploring
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Right Column Image Card -->
+<div class="order-1 md:order-2 relative">
+<div class="absolute -inset-4 bg-secondary-container/20 rounded-[4rem] blur-3xl -z-10 animate-pulse"></div>
+<div class="bg-surface-container-low p-6 rounded-xl shadow-[0_48px_80px_-12px_rgba(0,0,0,0.08)]">
+<div class="relative overflow-hidden rounded-lg aspect-[4/5] bg-stone-200">
+<img alt="Egyptian Heritage Illustration" class="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" data-alt="A beautiful high-quality 3D render of an Egyptian girl named 'Touta' with curly dark hair, wearing a vibrant yellow dress. She is holding an open, glowing green book. A magical spiraling trail of glowing miniature books and Egyptian symbols flows out of the book. In the background sky above her, the Pyramids of Giza are visible at sunset. Pixar-style, warm lighting, magical atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt3D3HbUKsC4NbGeBfVjLZdaPE2c20gdGvFowIQxzM4IxZa9UbsU2dkILDdTT_VUhDqzUGDr-sP0evHRMiqmzSOCs5ys8d41uf7BgwNBKa-160SjzdqZxE3_ejQShEvQ-ceOpvevzLHV0fDFa1_AuVGCLBAQj5_FhzGLgDU5wmpm2lkwb-Waf5LAHppYt50CUGrts0tJ3oRZ9UWt8nNDn0Rv0Sh5CfJnTBy550MgLG91HUf1TKHWguLAlUhr0shIMyFrGfM_TUiyI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply"></div>
+</div>
+<div class="mt-6 flex justify-between items-center px-2">
+<span class="font-label text-[10px] tracking-widest text-outline uppercase">ARCHIVE REF. NO. 042</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Touta Mascot Intro -->
+<section class="bg-surface-container-low py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 md:px-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<!-- Mascot Image -->
+<div class="relative flex justify-center">
+<div class="w-80 h-80 md:w-[450px] md:h-[450px] relative">
+<div class="absolute inset-0 border-[1px] border-primary/20 rounded-full scale-110"></div>
+<div class="absolute inset-0 border-[1px] border-secondary/10 rounded-full scale-125"></div>
+<div class="w-full h-full rounded-full overflow-hidden border-[12px] border-surface-container-lowest shadow-2xl">
+<img alt="Touta Character" class="w-full h-full object-cover" data-alt="A close-up 3D avatar of an Egyptian girl with curly dark hair and a friendly smile, wearing a yellow dress. She is holding a small book. Clean, simple studio background, high-quality 3D render." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDJuYds9CJTDAzSIDqK8IsLcNxdp28btqDEuJiV4deVlvw5KG_KjMopidSSn6RyLyGK3SrXcC8Hpg7l0pGm24y1cwdBpXu0Cbck1iQyBMQCojd623WCTgiH7t4VBVzMoGyhrJ9yyfesUGNNVQDdTCa3YOZRlkFpqfRyLkeqrorUDt5GFTV73w5zZJ034PO0uunw00U-zwHJC41YorQDqts5R8_smIJ8UUFpscE7X6fzLYYktfyDO2hpZhEoanyvcFJrNM9NtCUz00"/>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-secondary text-on-secondary px-6 py-4 rounded-xl font-label text-xs tracking-tighter shadow-lg rotate-12">
+                            MEET THE CURATOR
+                        </div>
+</div>
+</div>
+<!-- Intro Text -->
+<div class="flex flex-col gap-6">
+<h2 class="font-headline text-5xl font-light text-on-background">
+                        Hi there, <span class="serif-italic">I'm Touta!</span>
+</h2>
+<p class="font-body text-xl text-on-surface-variant leading-relaxed opacity-80">
+                        Welcome to my little corner of history. I spend my days dusting off old stories and turning them into adventures for curious minds like yours. Whether we're decoding hieroglyphs or exploring the Nile, every discovery is a treasure waiting to be found.
+                    </p>
+<div class="pt-4">
+<button class="bg-primary-container text-on-primary-container px-10 py-4 rounded-full font-label font-bold hover:shadow-[0_20px_40px_-10px_rgba(226,125,96,0.4)] transition-all duration-300">
+                            Begin your Journey
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Showcase Gallery -->
+<section class="py-32 max-w-7xl mx-auto px-8 md:px-20">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="flex flex-col gap-4">
+<span class="font-label text-tertiary font-bold tracking-[0.2em] text-xs uppercase">THE COLLECTION</span>
+<h3 class="font-headline text-4xl font-light">Artifacts for <span class="serif-italic">Modern Explorers</span></h3>
+</div>
+<a class="font-label text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-8 hover:text-on-primary-container transition-colors" href="#">
+                VIEW THE ENTIRE ARCHIVE
+            </a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Notebooks -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-8 hover:bg-primary-fixed transition-colors duration-500 flex flex-col items-center text-center">
+<div class="w-full aspect-square bg-surface-container p-6 rounded-lg mb-8 overflow-hidden">
+<img alt="Notebooks" class="w-full h-full object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-700" data-alt="Handcrafted linen notebook with embossed gold leaf Egyptian motifs resting on a cream textured background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLDtjEAzM-7cYFxnYycWN7aJ8IgseFKkAQtsO3I73KUzmEAUQEgwEgOBjWDUs14BkOIaotqpav7JB42TICtnuB4aBj8FN17CI3XG5Vn0JqypPeK9czlZwe3rt4VRBTq-FlbWwUTQFM92_hFc4XhMA7yjegVZohAf-W7z0qb4h_IqAjwn1GQ4v48KFfeSS6lTsvfx61F44HrxSktUVawnrJQlSdi0JyMTBSqzHzHttbTo9YgYQTb76d8EuluepNiz4I6kTQDfC8dlo"/>
+</div>
+<span class="font-label text-[10px] tracking-widest text-outline uppercase mb-2">SCRIBE ESSENTIALS</span>
+<h4 class="font-headline text-xl mb-2">The Archive Notebook</h4>
+<p class="font-body text-sm text-on-surface-variant opacity-70">Capture your daily discoveries.</p>
+<div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">
+<span class="text-primary font-bold">Discover →</span>
+</div>
+</div>
+<!-- Puzzles -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-8 hover:bg-secondary-container transition-colors duration-500 flex flex-col items-center text-center">
+<div class="w-full aspect-square bg-surface-container p-6 rounded-lg mb-8 overflow-hidden">
+<img alt="Puzzles" class="w-full h-full object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-700" data-alt="Colorful premium jigsaw puzzle pieces forming a vibrant ancient Egyptian mural on a wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4-mmrOphWZcYk1TJwVRUODxmp_8IEQ6EhOQN0pUm8rjG6qiVh_pVVdtaOht7E9ZGQOUKPI-Fp-gt58tLGNZqdUIq5nUbdFWjrQkmvxHqqI3t1IVgRuidnc2TMDHbtMmfoYlIuEGJuuNCDUzHSxEW5Wxqp41J1GlypknUKoNwzs8y7stbwWsubV8_JR66MOq7CTIpwpBoT1vFcXpTxikPxKDEqQ7ILtGwTSuH3-Zm1k60vXA-dRc8Lf7vVlOjJfATQ2idIPbQXno4"/>
+</div>
+<span class="font-label text-[10px] tracking-widest text-outline uppercase mb-2">MYSTERY GAMES</span>
+<h4 class="font-headline text-xl mb-2">Sphinx Riddle Puzzles</h4>
+<p class="font-body text-sm text-on-surface-variant opacity-70">Piecing history back together.</p>
+<div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">
+<span class="text-secondary font-bold">Solve →</span>
+</div>
+</div>
+<!-- Pins -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-8 hover:bg-tertiary-fixed transition-colors duration-500 flex flex-col items-center text-center">
+<div class="w-full aspect-square bg-surface-container p-6 rounded-lg mb-8 overflow-hidden">
+<img alt="Pins" class="w-full h-full object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-700" data-alt="Collection of exquisite enamel pins featuring scarabs and lotus flowers arranged neatly on a dark felt board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8nrg83dlyUTJGSJNs_tE9LwBbL0ypcoR5J5QSB_cn83-V_xQYx6e83WNzI0kbd0AUfyGn-BbcK_RQvCITsLMcKFFRyr0CQ8ptBnw9RamVZOURL62EKO_mNgZaVbdk1oy2xuB4aZbYGKExhnP9XBsPCqJcaDuM2nm24hVjLNhfyCfbn-8aHwDhfSZTEnFBZYfkzQuoiAdCPUYihayWO_Rpn7-_fMQEtwju-o0UhJraGvIO5w_RvQCLUN6vFLPYGwrZodxna4Wt6TI"/>
+</div>
+<span class="font-label text-[10px] tracking-widest text-outline uppercase mb-2">EMBLEMS</span>
+<h4 class="font-headline text-xl mb-2">Curator's Enamel Pins</h4>
+<p class="font-body text-sm text-on-surface-variant opacity-70">Small tokens of eternal magic.</p>
+<div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">
+<span class="text-tertiary font-bold">Collect →</span>
+</div>
+</div>
+<!-- Coloring Books -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-8 hover:bg-surface-variant transition-colors duration-500 flex flex-col items-center text-center">
+<div class="w-full aspect-square bg-surface-container p-6 rounded-lg mb-8 overflow-hidden">
+<img alt="Coloring Books" class="w-full h-full object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-700" data-alt="Open coloring book showing detailed line art of ancient Egyptian scenes with colored pencils scattered alongside" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT29my_ykSCvtf1BAxFbJPS_qQjC18zxdb6-0fi16jS-lzlwnnESjW0xxUN7CY3zlaoVoMDOdOyuGfofWRSh6XlrK28i06lYa3-IofQoMTElaPzgui5C329VNwNschqPUFBj4kUbiPVxadHJpndHTtGZKXO9bJm2a0YCf1Gd3rTOhSavmMclSvpuF4pgFApy5GHSh0vLJkR2c0EEA79RsvS5QnGU38tDO60PzU7W1HnZc8QTOGRBP1sE_adw-_fckqo6R6evQL-N4"/>
+</div>
+<span class="font-label text-[10px] tracking-widest text-outline uppercase mb-2">CANVAS WORK</span>
+<h4 class="font-headline text-xl mb-2">Pharaoh's Coloring Book</h4>
+<p class="font-body text-sm text-on-surface-variant opacity-70">Add your own light to the story.</p>
+<div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">
+<span class="text-on-surface font-bold">Create →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Quote Block -->
+<section class="relative w-full py-40 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-[#c2c384]/20 via-surface to-[#e27d60]/10"></div>
+<div class="max-w-4xl mx-auto px-10 relative z-10 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-8 opacity-40" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="font-headline text-4xl md:text-6xl text-on-surface leading-[1.3] font-light">
+                If we were still kids, <span class="serif-italic text-secondary">Touta</span> would be the place where learning felt like <span class="text-primary-container">magic</span>.
+            </blockquote>
+<div class="h-0.5 w-24 bg-primary/20 mx-auto mt-12"></div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#f5f3ef] dark:bg-stone-900 rounded-t-[3rem] w-full mt-20 flex flex-col items-center px-10 md:px-20 py-16 gap-12">
+<div class="w-full flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-3xl font-serif text-stone-800 dark:text-stone-100">
+                Touta's World
+            </div>
+<div class="flex flex-wrap justify-center gap-8 font-['Manrope'] text-sm tracking-wide uppercase">
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors" href="#">The Gallery</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors" href="#">Privacy Parchment</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors" href="#">Terms of Discovery</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors" href="#">Contact the Curator</a>
+</div>
+<div class="flex gap-6">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</a>
+</div>
+</div>
+<div class="w-full pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+<p class="font-['Manrope'] text-sm tracking-wide uppercase text-stone-500 dark:text-stone-400">
+                © 2024 Touta's World. A Nostalgic Curator's Archive.
+            </p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-label font-bold text-outline-variant tracking-widest uppercase">STORYTELLING FOR THE NEXT GENERATION</span>
+</div>
+</div>
+</footer>
+</body></html>

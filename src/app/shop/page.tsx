@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ShoppingBag, X, Plus, Minus, Send, MessageCircle } from "lucide-react";
 import { BrandText } from "@/components/BrandText";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 // --- Types ---
 interface Product {
@@ -469,7 +469,7 @@ function ShopContent() {
                   </button>
                   
                   <p className="text-center text-[10px] text-gray-400 uppercase tracking-[0.2em] font-sans pt-2">
-                    Magic takes time. Our team will contact you shortly.
+                    Our team will contact you shortly to finalize your magical order.
                   </p>
                 </div>
               )}

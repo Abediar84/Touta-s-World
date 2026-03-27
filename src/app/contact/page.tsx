@@ -3,10 +3,17 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isBot, setIsBot] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isBot) return; // Bot detected, silently ignore
+    setSubmitted(true);
+  };
 
   return (
     <main className="min-h-screen w-full bg-[#fafafa] overflow-hidden">
@@ -89,8 +96,18 @@ export default function ContactPage() {
             ) : (
               <form
                 className="flex flex-col gap-5"
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                onSubmit={handleSubmit}
               >
+                {/* Honeypot field - hidden from real users */}
+                <input 
+                  type="text" 
+                  name="_honey" 
+                  style={{ display: 'none' }} 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  onChange={(e) => setIsBot(!!e.target.value)}
+                />
+
                 <div className="grid grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="font-sans text-sm font-bold text-gray-700">First Name</label>

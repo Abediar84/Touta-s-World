@@ -1,73 +1,84 @@
-"use client";
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
 
-interface ProductShowcaseProps {
-  title: ReactNode;
-  subtitle?: string;
-  bgColor: string;
-  reversed?: boolean;
-  assetPlaceholder: string;
-  category: string;
-  children?: ReactNode;
-}
+const mockProducts = [
+  {
+    category: 'SCRIBE ESSENTIALS',
+    name: 'The Archive Notebook',
+    description: 'Capture your daily discoveries.',
+    image: '/notebook.png',
+    actionText: 'Discover →',
+    hoverColor: 'hover:bg-primary-fixed',
+    textColor: 'text-primary'
+  },
+  {
+    category: 'MYSTERY GAMES',
+    name: 'Sphinx Riddle Puzzles',
+    description: 'Piecing history back together.',
+    image: '/puzzle.png',
+    actionText: 'Solve →',
+    hoverColor: 'hover:bg-secondary-container',
+    textColor: 'text-secondary'
+  },
+  {
+    category: 'EMBLEMS',
+    name: 'Curator\'s Enamel Pins',
+    description: 'Small tokens of eternal magic.',
+    image: '/pins.png',
+    actionText: 'Collect →',
+    hoverColor: 'hover:bg-tertiary-fixed',
+    textColor: 'text-tertiary'
+  },
+  {
+    category: 'CANVAS WORK',
+    name: 'Pharaoh\'s Coloring Book',
+    description: 'Add your own light to the story.',
+    image: '/coloring.png',
+    actionText: 'Create →',
+    hoverColor: 'hover:bg-surface-variant',
+    textColor: 'text-on-surface'
+  }
+];
 
-export const ProductShowcase = ({ title, subtitle, bgColor, reversed = false, assetPlaceholder, category, children }: ProductShowcaseProps) => {
+export default function ProductShowcase() {
   return (
-    <section className={`relative flex min-h-screen w-full items-center justify-center px-6 py-32 overflow-hidden ${bgColor}`}>
-      <div className={`mx-auto flex w-full max-w-7xl flex-col items-center gap-20 ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-        
-        {/* Visual Focus Area */}
-        <motion.div 
-          className="flex-1 relative w-full aspect-[4/5] rounded-[3rem] flex flex-col items-center justify-center overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-           <Image src={`/${assetPlaceholder}.png`} alt={assetPlaceholder} fill className="object-contain z-10 drop-shadow-2xl transition-transform duration-700 hover:scale-105" />
-           
-           {/* Custom Children injection (e.g., Arabic calligraphy overlay) */}
-           {children}
-        </motion.div>
+    <section className="py-32 max-w-7xl mx-auto px-8 md:px-20">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div className="flex flex-col gap-4">
+          <span className="font-label text-tertiary font-bold tracking-[0.2em] text-xs uppercase">THE COLLECTION</span>
+          <h3 className="font-headline text-4xl font-light">
+            Artifacts for <span className="font-headline italic text-primary">Modern Explorers</span>
+          </h3>
+        </div>
+        <a className="font-label text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-8 hover:text-on-primary-container transition-colors" href="/shop">
+          VIEW THE ENTIRE ARCHIVE
+        </a>
+      </div>
 
-        {/* Text / Interaction Area */}
-        <motion.div 
-          className="flex-1 text-center md:text-left flex flex-col items-center md:items-start"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Eyebrow */}
-          {subtitle && (
-            <span className="inline-flex items-center gap-3 mb-6 text-white/90 font-sans font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
-              <span className={`inline-block w-10 h-[1px] bg-white/70 ${reversed ? 'md:hidden' : 'hidden md:inline-block'}`} />
-              {subtitle}
-              <span className={`inline-block w-10 h-[1px] bg-white/70 ${reversed ? 'hidden md:inline-block' : 'md:hidden'}`} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {mockProducts.map((product, idx) => (
+          <div key={idx} className={`group relative bg-surface-container-lowest rounded-xl p-8 ${product.hoverColor} transition-colors duration-500 flex flex-col items-center text-center`}>
+            <div className="w-full aspect-square relative bg-surface-container p-6 rounded-lg mb-8 overflow-hidden">
+              <Image 
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <span className="font-label text-[10px] tracking-widest text-outline uppercase mb-2">
+              {product.category}
             </span>
-          )}
-
-          {/* Headline */}
-          <h2 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] mb-12 leading-tight tracking-tight drop-shadow-sm">
-            {title}
-          </h2>
-
-          {/* Luxury Primary Button */}
-          <Link 
-            href={`/shop?category=${encodeURIComponent(category)}`}
-            className="group relative inline-flex items-center justify-center rounded-full bg-gray-900 px-10 py-4 md:px-12 md:py-5 font-sans text-sm md:text-base font-bold text-white shadow-xl shadow-gray-900/20 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-gray-900/30 active:scale-95"
-          >
-            <span>Explore Collection</span>
-            <span className="absolute right-6 opacity-0 translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-              →
-            </span>
-            <span className="transition-all duration-300 group-hover:pr-6" />
-          </Link>
-        </motion.div>
+            <h4 className="font-headline text-xl mb-2">{product.name}</h4>
+            <p className="font-body text-sm text-on-surface-variant opacity-70">
+              {product.description}
+            </p>
+            <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">
+              <span className={`${product.textColor} font-bold`}>{product.actionText}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
+}

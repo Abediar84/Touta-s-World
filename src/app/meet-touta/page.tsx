@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const storyChapters = [
   {
@@ -62,7 +63,7 @@ export default function MeetToutaPage() {
         >
           {/* Mascot */}
           <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-8">
-            <Image src="/mascot-peeking.png" alt="Touta mascot" fill className="object-contain drop-shadow-2xl" />
+            <Image src="/mascot-peeking.png" alt="Touta mascot" fill className="object-contain drop-shadow-2xl" priority />
           </div>
 
           <h1 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] leading-tight tracking-tight mb-6">
@@ -82,20 +83,35 @@ export default function MeetToutaPage() {
             <motion.div
               key={chapter.id}
               className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-20`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+              }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Image */}
-              <div className="flex-1 relative w-full aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
-                style={{ boxShadow: `0 30px 80px ${chapter.accent}30` }}>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, scale: 0.95, y: 30 },
+                  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                className="flex-1 relative w-full aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+                style={{ boxShadow: `0 30px 80px ${chapter.accent}30` }}
+              >
                 <Image src={chapter.image} alt={chapter.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-              </div>
+              </motion.div>
 
               {/* Text */}
-              <div className="flex-1 text-left">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: idx % 2 === 0 ? 30 : -30 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                className="flex-1 text-left"
+              >
                 <span
                   className="inline-flex items-center gap-3 font-sans font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6"
                   style={{ color: chapter.accent }}
@@ -114,7 +130,7 @@ export default function MeetToutaPage() {
                 <p className="font-sans text-lg md:text-xl text-gray-600 leading-relaxed font-light">
                   {chapter.text}
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
@@ -135,16 +151,18 @@ export default function MeetToutaPage() {
           <p className="font-sans text-lg md:text-xl text-white/90 mb-14 font-light max-w-xl mx-auto">
             Discover our magical collection of notebooks, puzzles, pins, and coloring books.
           </p>
-          <Link
-            href="/shop"
-            className="group relative inline-flex items-center justify-center rounded-full bg-white px-12 py-5 font-sans text-sm md:text-base font-bold text-[#e27d60] shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/20 active:scale-95"
-          >
-            <span>Explore the Collection</span>
-            <span className="absolute right-6 opacity-0 translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-              →
-            </span>
-            <span className="transition-all duration-300 group-hover:pr-6" />
-          </Link>
+          <MagneticButton className="inline-block mt-4">
+            <Link
+              href="/shop"
+              className="group relative inline-flex items-center justify-center rounded-full bg-white px-12 py-5 font-sans text-sm md:text-base font-bold text-[#e27d60] shadow-xl shadow-black/10 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/20 active:scale-95"
+            >
+              <span>Explore the Collection</span>
+              <span className="absolute right-6 opacity-0 translate-x-[-10px] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                →
+              </span>
+              <span className="transition-all duration-300 group-hover:pr-6" />
+            </Link>
+          </MagneticButton>
         </motion.div>
       </section>
 

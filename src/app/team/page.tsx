@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
-import { Navbar } from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 // Team data is now redundant as we are using a narrative approach
 

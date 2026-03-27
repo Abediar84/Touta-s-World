@@ -14,8 +14,30 @@ const haveHeart = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Touta's World",
-  description: 'Welcome to the magical world of Touta.',
+  metadataBase: new URL('https://toutasworld.com'),
+  title: "Touta's World | A Magical Learning Experience",
+  description: "Discover Touta's World, a premium storytelling and educational platform where magical adventures meet beautiful learning resources.",
+  openGraph: {
+    title: "Touta's World | Premium Educational Narrative",
+    description: "Discover a magical world of storytelling, beautifully crafted notebooks, and learning adventures.",
+    url: 'https://toutasworld.com',
+    siteName: "Touta's World",
+    images: [
+      {
+        url: '/hero-pyramids.png',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Touta's World",
+    description: "A premium storytelling and educational platform.",
+    images: ['/hero-pyramids.png'],
+  },
 };
 
 export default function RootLayout({
