@@ -1,13 +1,45 @@
 "use client";
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
+
+const cinemaEase = [0.16, 1, 0.3, 1] as const;
+
+const LetterReveal = ({ text, className, delay = 0 }: { text: string; className: string; delay?: number }) => {
+  return (
+    <span className={className}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: delay + (i * 0.03),
+            ease: cinemaEase
+          }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
 
 export default function Hero() {
-  const cinemaEase = [0.16, 1, 0.3, 1] as const;
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const imgRotate = useTransform(scrollYProgress, [0, 1], [0, 2]);
 
   return (
-    <header className="max-w-7xl mx-auto px-8 md:px-20 mt-24 mb-32 overflow-visible">
+    <header ref={ref} className="max-w-7xl mx-auto px-8 md:px-20 mt-24 mb-32 overflow-visible relative">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* Left Column Content */}
         <motion.div 
@@ -34,34 +66,36 @@ export default function Hero() {
           </div>
           
           <h1 className="font-serif text-5xl md:text-[5rem] leading-[1.05] font-light text-[#1a1a1a] tracking-tight">
-            Begin your <br/>
+            <LetterReveal text="Begin your" className="block" />
             <motion.span 
               className="inline-block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: cinemaEase }}
+              transition={{ duration: 1, delay: 0.8, ease: cinemaEase }}
             >
               journey with <span className="font-brand italic text-[#e27d60] text-[4.5rem] md:text-[6.5rem] leading-none ml-2">Touta</span>
             </motion.span>
           </h1>
           
-          <p className="font-sans text-lg text-gray-500 max-w-md leading-relaxed font-light">
+          <p className="font-sans text-lg text-stone-500 max-w-md leading-relaxed font-light">
             A curated digital sanctuary where Egyptian heritage meets modern curiosity. We craft experiences that invite children to explore the echoes of the past through the lens of wonder.
           </p>
           
-          <motion.button 
-            className="bg-[#1a1a1a] text-white px-10 py-5 rounded-full font-sans font-bold text-sm hover:bg-[#e27d60] transition-colors duration-500 group flex items-center gap-3 shadow-xl hover:shadow-[#e27d60]/20"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.4, ease: cinemaEase }}
-          >
-            Start Exploring
-            <motion.span 
-              className="text-lg group-hover:translate-x-1 transition-transform"
+          <Link href="/meet-touta">
+            <motion.button 
+              className="bg-[#1a1a1a] text-white px-10 py-5 rounded-full font-sans font-bold text-sm hover:bg-[#e27d60] transition-colors duration-500 group flex items-center gap-3 shadow-xl hover:shadow-[#e27d60]/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: cinemaEase }}
             >
-              →
-            </motion.span>
-          </motion.button>
+              Start Exploring
+              <motion.span 
+                className="text-lg group-hover:translate-x-1 transition-transform"
+              >
+                →
+              </motion.span>
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Right Column Image Card */}
@@ -85,7 +119,10 @@ export default function Hero() {
             }}
           />
 
-          <div className="bg-white p-6 rounded-[2.5rem] shadow-[0_60px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50">
+          <motion.div 
+            style={{ y: imgY, rotate: imgRotate }}
+            className="bg-white p-6 rounded-[2.5rem] shadow-[0_60px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-50"
+          >
             <div className="relative overflow-hidden rounded-[1.5rem] aspect-[4/5] bg-stone-100 group">
               <motion.div
                 className="w-full h-full relative"
@@ -93,24 +130,24 @@ export default function Hero() {
                 transition={{ duration: 1, ease: cinemaEase }}
               >
                 <Image 
-                  src="/hero-pyramids.png"
+                  src="/Touta-s-World/hero-pyramids.png"
                   alt="Touta and Pyramids of Giza" 
                   fill
                   priority
-                  className="object-cover grayscale-[0.2] transition-all duration-1000" 
+                  className="object-cover transition-all duration-1000" 
                 />
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
             
             <div className="mt-8 flex justify-between items-center px-4">
-              <span className="font-sans text-[9px] tracking-[0.4em] text-gray-400 font-bold uppercase">ARCHIVE REF. NO. 042</span>
+              <span className="font-sans text-[9px] tracking-[0.4em] text-stone-400 font-bold uppercase">COLLECTION REF. NO. 042</span>
               <div className="flex gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#c2c384]" />
                 <div className="w-1.5 h-1.5 rounded-full bg-[#e27d60]" />
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </header>

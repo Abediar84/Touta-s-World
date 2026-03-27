@@ -10,8 +10,8 @@
   --color-surface: #ffffff;
   --color-foreground: #2d3748;
   
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-montserrat);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
   --font-script: var(--font-dancing);
   --font-have-heart: var(--font-dancing);
   --font-brand: var(--font-have-heart);

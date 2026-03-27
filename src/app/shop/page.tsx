@@ -1,12 +1,15 @@
 "use client";
-import { useState, useMemo, useEffect, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useMemo, useEffect, Suspense, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ShoppingBag, X, Plus, Minus, Send, MessageCircle } from "lucide-react";
+import { ShoppingBag, X, Plus, Minus, Send, MessageCircle, ArrowRight } from "lucide-react";
 import { BrandText } from "@/components/BrandText";
 import Navbar from "@/components/Navbar";
+import BrandFooter from "@/components/BrandFooter";
+
+const cinemaEase = [0.16, 1, 0.3, 1] as const;
 
 // --- Types ---
 interface Product {
@@ -24,27 +27,27 @@ interface CartItem extends Product {
   quantity: number;
 }
 
-// --- Product Data ---
+// --- Updated Product Data (14 Editions) ---
 const ALL_PRODUCTS: Product[] = [
-  // 1. Notebooks
+  // 1. Touta Notebook
   {
     id: "nb-1",
     name: "Touta Edition Notebook",
     category: "Notebooks",
-    price: 45,
+    price: 350,
     slogan: "Your next favorite notebook is waiting — get yours now.",
-    image: "/notebook.png",
+    image: "/Touta-s-World/notebook.png",
     bg: "bg-[#edf3e3]",
     accent: "#c2c384",
   },
-  // 2. Puzzles
+  // 2. Touta Puzzle
   {
     id: "pz-1",
-    name: "Green Touta Puzzle",
+    name: "Green Touta Edition Puzzle",
     category: "Puzzles",
-    price: 120,
+    price: 450,
     slogan: "Small pieces, big ideas growing together.",
-    image: "/puzzle.png",
+    image: "/Touta-s-World/puzzle.png",
     bg: "bg-[#fdf0e4]",
     accent: "#e8a87c",
   },
@@ -52,9 +55,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "pz-2",
     name: "In the Pyramids Puzzle",
     category: "Puzzles",
-    price: 120,
+    price: 450,
     slogan: "A journey through mystery, built piece by piece.",
-    image: "/puzzle.png",
+    image: "/Touta-s-World/puzzle.png",
     bg: "bg-[#fdf0e4]",
     accent: "#e8a87c",
   },
@@ -62,9 +65,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "pz-3",
     name: "In Class Puzzle",
     category: "Puzzles",
-    price: 120,
+    price: 450,
     slogan: "Where curiosity comes together, one piece at a time.",
-    image: "/puzzle.png",
+    image: "/Touta-s-World/puzzle.png",
     bg: "bg-[#fdf0e4]",
     accent: "#e8a87c",
   },
@@ -72,20 +75,20 @@ const ALL_PRODUCTS: Product[] = [
     id: "pz-4",
     name: "In the Zoo Puzzle",
     category: "Puzzles",
-    price: 120,
+    price: 450,
     slogan: "Where every piece brings the wild to life.",
-    image: "/puzzle.png",
+    image: "/Touta-s-World/puzzle.png",
     bg: "bg-[#fdf0e4]",
     accent: "#e8a87c",
   },
-  // 3. Pins
+  // 3. Touta Pins
   {
     id: "pin-1",
     name: "Storytelling Magic Pin",
     category: "Pins",
-    price: 25,
+    price: 150,
     slogan: "Where every story begins with a spark.",
-    image: "/pins.png",
+    image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
@@ -93,9 +96,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-2",
     name: "In the Pyramids Pin",
     category: "Pins",
-    price: 25,
+    price: 150,
     slogan: "A tiny piece of adventure from a world of ancient wonder.",
-    image: "/pins.png",
+    image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
@@ -103,9 +106,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-3",
     name: "In the Garden Pin",
     category: "Pins",
-    price: 25,
+    price: 150,
     slogan: "A small symbol of growing ideas and gentle care.",
-    image: "/pins.png",
+    image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
@@ -113,9 +116,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-4",
     name: "In Class Pin",
     category: "Pins",
-    price: 25,
+    price: 150,
     slogan: "A little reminder that learning can be fun.",
-    image: "/pins.png",
+    image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
@@ -123,20 +126,20 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-5",
     name: "Touta Logo Pin",
     category: "Pins",
-    price: 25,
+    price: 150,
     slogan: "The magic of Touta, carried with you everywhere.",
-    image: "/pins.png",
+    image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
-  // 4. Coloring Books
+  // 4. Touta Coloring Books
   {
     id: "cb-1",
     name: "Green Touta Coloring Book",
     category: "Coloring Books",
-    price: 35,
+    price: 250,
     slogan: "Create, color, and grow something beautiful.",
-    image: "/coloring.png",
+    image: "/Touta-s-World/coloring.png",
     bg: "bg-[#fceae7]",
     accent: "#e5b3aa",
   },
@@ -144,9 +147,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "cb-2",
     name: "In the Pyramids Coloring Book",
     category: "Coloring Books",
-    price: 35,
+    price: 250,
     slogan: "Uncover ancient wonders, one color at a time",
-    image: "/coloring.png",
+    image: "/Touta-s-World/coloring.png",
     bg: "bg-[#fceae7]",
     accent: "#e5b3aa",
   },
@@ -154,9 +157,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "cb-3",
     name: "In the Zoo Coloring Book",
     category: "Coloring Books",
-    price: 35,
+    price: 250,
     slogan: "A colorful adventure where every page meets a new friend.",
-    image: "/coloring.png",
+    image: "/Touta-s-World/coloring.png",
     bg: "bg-[#fceae7]",
     accent: "#e5b3aa",
   },
@@ -164,9 +167,9 @@ const ALL_PRODUCTS: Product[] = [
     id: "cb-4",
     name: "Our Body Coloring Book",
     category: "Coloring Books",
-    price: 35,
+    price: 250,
     slogan: "Discover the magic inside you through color and curiosity.",
-    image: "/coloring.png",
+    image: "/Touta-s-World/coloring.png",
     bg: "bg-[#fceae7]",
     accent: "#e5b3aa",
   },
@@ -183,6 +186,14 @@ function ShopContent() {
   );
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Scroll parallax for Hero
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+  const heroY = useTransform(scrollYProgress, [0, 0.3], ["0%", "20%"]);
 
   // Sync with URL params
   useEffect(() => {
@@ -232,78 +243,87 @@ function ShopContent() {
   // --- Checkout Logic ---
   const generateOrderSummary = () => {
     return cart
-      .map((item) => `${item.name} x${item.quantity} - ${item.price * item.quantity} EGP`)
+      .map((item) => `- ${item.name} (x${item.quantity})`)
       .join("\n");
   };
 
   const handleWhatsAppCheckout = () => {
     const message = encodeURIComponent(
-      `Hi Touta's Team! I'd like to place an order:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP`
+      `Hi Touta Team! I'd like to place an order for the following items:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP\n\nPlease let me know the next steps!`
     );
-    window.open(`https://wa.me/201234567890?text=${message}`, "_blank"); // Placeholder number
+    window.open(`https://wa.me/201234567890?text=${message}`, "_blank"); // Placeholder
   };
 
   const handleEmailCheckout = () => {
     const body = encodeURIComponent(
-      `Hi Touta's Team!\n\nI'd like to place an order:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP`
+      `Hi Touta Team!\n\nI'm interested in ordering the following items from the collection:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP\n\nPlease send me the confirmation and delivery details.`
     );
-    window.location.href = `mailto:orders@toutasworld.com?subject=New Order from Touta's World&body=${body}`;
+    window.location.href = `mailto:hello@toutasworld.com?subject=New Collection Order&body=${body}`;
   };
 
   return (
-    <main className="min-h-screen w-full bg-[#fafafa] overflow-hidden">
+    <main ref={containerRef} className="min-h-screen w-full bg-[#fafafa] overflow-hidden leading-relaxed">
       <Navbar />
       
       {/* Floating Cart Trigger */}
-      <motion.button
-        className="fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#e27d60] text-white shadow-2xl hover:scale-110 transition-transform"
-        onClick={() => setIsCartOpen(true)}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-      >
-        <ShoppingBag size={24} />
+      <AnimatePresence>
         {cartCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#c2c384] text-[10px] font-bold">
-            {cartCount}
-          </span>
+          <motion.button
+            className="fixed bottom-10 right-10 z-50 flex flex-col items-center gap-2 group"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            onClick={() => setIsCartOpen(true)}
+          >
+             <div className="bg-[#e27d60] text-white p-6 rounded-full shadow-[0_20px_40px_rgba(226,125,96,0.3)] group-hover:scale-110 transition-transform relative">
+                <ShoppingBag size={28} />
+                <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-[#c2c384] text-[10px] font-extrabold shadow-md">
+                  {cartCount}
+                </span>
+             </div>
+             <span className="bg-stone-900 text-white text-[9px] px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity font-sans tracking-widest uppercase">View Bag</span>
+          </motion.button>
         )}
-      </motion.button>
+      </AnimatePresence>
 
-      {/* Hero */}
-      <section className="relative w-full min-h-[45vh] flex flex-col items-center justify-center text-center px-6 py-28 bg-gradient-to-br from-[#fdfbf7] to-[#fdf0e4]">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#e8a87c]/15 blur-[80px] pointer-events-none" />
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-gradient-to-br from-[#fdfbf7] to-[#f5f1ea]">
+        <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
+           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#c2c384]/5 blur-[120px]" />
+           <div className="absolute bottom-0 left-0 w-1/2 h-full bg-[#e27d60]/5 blur-[120px]" />
+        </motion.div>
+
         <motion.div
-          className="relative z-10 max-w-3xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 max-w-4xl"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: cinemaEase }}
         >
-          {/* Eyebrow */}
-          <span className="inline-flex items-center gap-3 mb-6 text-[#e8a87c] font-sans font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
-            <span className="w-10 h-[1px] bg-[#e8a87c]/50 inline-block" />
-            Collection
-            <span className="w-10 h-[1px] bg-[#e8a87c]/50 inline-block" />
+          <span className="inline-flex items-center gap-4 mb-8 text-[#c2c384] font-sans font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs">
+            <span className="w-12 h-[1px] bg-[#c2c384]/30" />
+            THE COLLECTION
+            <span className="w-12 h-[1px] bg-[#c2c384]/30" />
           </span>
-          <h1 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] mb-6 leading-tight tracking-tight">
-            Shop with <BrandText className="text-[#e27d60] text-[4rem] md:text-[6rem] leading-none">Touta</BrandText>
+          <h1 className="font-serif text-6xl md:text-[7rem] font-bold text-stone-800 mb-8 leading-[0.9] tracking-tighter">
+            Artifacts of <br/> <BrandText className="text-[#e27d60] italic">Wonder</BrandText>
           </h1>
-          <p className="font-sans text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto">
-            Curated treasures designed to spark imagination and bring the magic of learning into your home.
+          <p className="font-sans text-xl md:text-2xl text-stone-500 leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
+             Every piece in our collection is an invitation to <span className="text-stone-800 font-medium">explore</span> and <span className="text-stone-800 font-medium">imagine</span>.
           </p>
         </motion.div>
       </section>
 
-      {/* Category Filter */}
-      <section className="w-full px-6 py-12">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4">
+      {/* Category Navigation */}
+      <section className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-stone-100">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex overflow-x-auto no-scrollbar justify-center gap-4">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-8 py-3 font-sans text-sm font-bold transition-all border ${
+              className={`whitespace-nowrap rounded-full px-8 py-3 font-sans text-xs font-bold tracking-widest uppercase transition-all ${
                 activeCategory === cat
-                  ? "bg-[#c2c384] text-white border-[#c2c384] shadow-lg"
-                  : "bg-white text-gray-500 border-gray-100 hover:border-[#c2c384]/30"
+                  ? "bg-stone-900 text-white shadow-xl scale-105"
+                  : "bg-stone-50 text-stone-400 hover:bg-stone-100"
               }`}
             >
               {cat}
@@ -313,52 +333,60 @@ function ShopContent() {
       </section>
 
       {/* Product Grid */}
-      <section className="w-full px-6 pb-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="w-full px-6 py-32 bg-white relative">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('/stone-texture.png')] bg-repeat" />
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
               <motion.div
                 key={product.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="group rounded-[2.5rem] overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.8, ease: cinemaEase }}
+                className="group flex flex-col h-full"
               >
-                {/* Product Image */}
-                <div className={`relative w-full aspect-[5/4] ${product.bg} flex items-center justify-center overflow-hidden`}>
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-contain p-10 group-hover:scale-110 group-hover:drop-shadow-2xl transition-all duration-700 ease-[0.16,1,0.3,1]"
-                  />
-                  <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-[#111] shadow-sm">
-                    {product.category}
-                  </div>
+                {/* Image Container */}
+                <div className={`relative aspect-[5/4] ${product.bg} rounded-[2.5rem] overflow-hidden mb-10 transition-all duration-700 shadow-sm group-hover:shadow-2xl group-hover:-translate-y-2`}>
+                   <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-12 transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                   {/* Add to Cart Floating Button */}
+                   <button 
+                     onClick={() => addToCart(product)}
+                     className="absolute bottom-6 right-6 bg-white text-stone-900 p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-[#e27d60] hover:text-white"
+                   >
+                     <ShoppingBag size={20} />
+                   </button>
                 </div>
 
-                {/* Product Info */}
-                <div className="p-8 md:p-10 flex flex-col flex-1">
-                  <h2 className="font-serif text-2xl md:text-3xl font-medium text-[#1a1a1a] mb-4 group-hover:text-[#e27d60] transition-colors leading-tight tracking-tight">
-                    {product.name.split("Touta").map((part, i, arr) => (
-                      <span key={i}>
-                        {part}
-                        {i < arr.length - 1 && <BrandText>Touta</BrandText>}
-                      </span>
-                    ))}
-                  </h2>
-                  <p className="font-sans text-base text-gray-500 leading-relaxed mb-8 italic font-light border-l border-[#c2c384]/40 pl-5">{product.slogan}</p>
-                  <div className="mt-auto flex items-center justify-between pt-4">
-                    <span className="font-serif text-3xl font-medium text-[#1a1a1a]">{product.price} <span className="text-sm text-gray-400 font-sans tracking-widest">EGP</span></span>
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="rounded-full bg-gray-900 px-8 py-3.5 font-sans text-xs md:text-sm font-bold text-white transition-all duration-300 hover:bg-[#e27d60] hover:scale-[1.03] active:scale-95 shadow-xl hover:shadow-[#e27d60]/30"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
+                {/* Info Container */}
+                <div className="flex-1 space-y-4 px-2">
+                   <div className="flex items-center gap-3">
+                      <span className="w-8 h-[1px] bg-stone-200" />
+                      <span className="font-sans text-[10px] tracking-[0.3em] font-bold text-stone-300 uppercase">{product.category}</span>
+                   </div>
+                   <h2 className="font-serif text-3xl font-bold text-stone-800 leading-tight">
+                      {product.name}
+                   </h2>
+                   <p className="font-sans text-stone-400 font-light leading-relaxed italic border-l-2 border-stone-100 pl-6 py-1">
+                      &quot;{product.slogan}&quot;
+                   </p>
+                   <div className="pt-4 flex items-center justify-between">
+                      <span className="font-serif text-2xl text-stone-900">{product.price} <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-400 ml-1">EGP</span></span>
+                      <button 
+                         onClick={() => addToCart(product)}
+                         className="flex items-center gap-2 font-sans text-[10px] tracking-[0.3em] font-bold text-[#c2c384] hover:text-[#e27d60] transition-colors uppercase group/btn"
+                      >
+                         Add to Collection <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
+                   </div>
                 </div>
               </motion.div>
             ))}
@@ -366,7 +394,7 @@ function ShopContent() {
         </div>
       </section>
 
-      {/* Cart Drawer Overlay */}
+      {/* Cart Drawer */}
       <AnimatePresence>
         {isCartOpen && (
           <>
@@ -375,102 +403,84 @@ function ShopContent() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-[60] bg-stone-900/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 z-[70] w-full max-w-md bg-white shadow-2xl flex flex-col"
+              transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+              className="fixed right-0 top-0 bottom-0 z-[70] w-full max-w-xl bg-white shadow-2xl flex flex-col p-10 md:p-16"
             >
-              {/* Cart Header */}
-              <div className="p-8 border-b border-gray-100 flex items-center justify-between bg-[#fdfbf7]">
-                <div className="flex items-center gap-3">
-                  <ShoppingBag className="text-[#e27d60]" />
-                  <h2 className="font-serif text-2xl font-bold text-gray-900">Your Magic Bag</h2>
-                </div>
-                <button
-                  onClick={() => setIsCartOpen(false)}
-                  className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
-                >
-                  <X />
-                </button>
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between mb-16">
+                 <div>
+                    <h2 className="font-serif text-4xl font-bold text-stone-900 mb-2">Magic Bag</h2>
+                    <p className="font-sans text-xs tracking-widest text-[#c2c384] font-bold uppercase">Artifacts selected for you</p>
+                 </div>
+                 <button onClick={() => setIsCartOpen(false)} className="text-stone-300 hover:text-stone-900 transition-colors p-2">
+                    <X size={32} strokeWidth={1.5} />
+                 </button>
               </div>
 
-              {/* Cart Items */}
-              <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-6">
-                {cart.length === 0 ? (
-                  <div className="h-full flex flex-col items-center justify-center text-center opacity-40 py-20">
-                    <div className="text-6xl mb-4">✨</div>
-                    <p className="font-serif text-xl">Your bag is empty.</p>
-                    <p className="font-sans text-sm">Add some magic to get started!</p>
-                  </div>
-                ) : (
-                  cart.map((item) => (
-                    <div key={item.id} className="flex gap-4 items-center">
-                      <div className={`relative h-20 w-20 rounded-2xl ${item.bg} flex-shrink-0 flex items-center justify-center overflow-hidden`}>
-                        <Image src={item.image} alt={item.name} fill className="object-contain p-2" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-serif text-lg font-bold text-gray-900 leading-tight">
-                          {item.id.includes("nb") || item.id.includes("pz") || item.id.includes("pin") || item.id.includes("cb") ? (
-                            item.name.split("Touta").map((part, i, arr) => (
-                              <span key={i}>
-                                {part}
-                                {i < arr.length - 1 && <BrandText>Touta</BrandText>}
-                              </span>
-                            ))
-                          ) : item.name}
-                        </h3>
-                        <p className="text-[#c2c384] font-serif text-sm font-bold">{item.price} EGP</p>
-                        
-                        <div className="flex items-center gap-4 mt-2">
-                          <div className="flex items-center border border-gray-200 rounded-full px-2 py-1">
-                            <button onClick={() => updateQuantity(item.id, -1)} className="p-1 hover:text-[#e27d60]"><Minus size={14}/></button>
-                            <span className="px-3 font-sans text-sm font-bold w-8 text-center">{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.id, 1)} className="p-1 hover:text-[#e27d60]"><Plus size={14}/></button>
-                          </div>
-                          <button 
-                            onClick={() => removeFromCart(item.id)}
-                            className="text-gray-300 hover:text-red-500 text-xs font-bold uppercase tracking-widest transition-colors"
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
+              {/* Items List */}
+              <div className="flex-1 overflow-y-auto no-scrollbar space-y-12">
+                 {cart.length === 0 ? (
+                    <div className="h-full flex flex-col items-center justify-center text-center opacity-30">
+                       <span className="text-8xl mb-8">✨</span>
+                       <p className="font-serif text-2xl mb-2">Your curate is empty</p>
+                       <p className="font-sans text-xs tracking-widest uppercase">Select an archive piece to begin</p>
                     </div>
-                  ))
-                )}
+                 ) : (
+                    cart.map((item) => (
+                      <div key={item.id} className="grid grid-cols-[100px_1fr] gap-8">
+                         <div className={`relative aspect-square rounded-2xl ${item.bg} overflow-hidden shadow-sm`}>
+                            <Image src={item.image} alt={item.name} fill className="object-contain p-4 scale-110" />
+                         </div>
+                         <div className="space-y-4">
+                            <h3 className="font-serif text-xl font-bold text-stone-800 leading-tight">{item.name}</h3>
+                            <div className="flex items-center justify-between">
+                               <div className="flex items-center border border-stone-100 rounded-full px-3 py-1 bg-stone-50">
+                                  <button onClick={() => updateQuantity(item.id, -1)} className="p-1 hover:text-[#e27d60] transition-colors"><Minus size={14}/></button>
+                                  <span className="px-4 font-sans text-sm font-bold w-10 text-center">{item.quantity}</span>
+                                  <button onClick={() => updateQuantity(item.id, 1)} className="p-1 hover:text-[#e27d60] transition-colors"><Plus size={14}/></button>
+                               </div>
+                               <span className="font-serif text-lg text-stone-900">{item.price * item.quantity} EGP</span>
+                            </div>
+                            <button onClick={() => removeFromCart(item.id)} className="font-sans text-[8px] tracking-[0.4em] font-bold text-stone-300 hover:text-red-400 uppercase transition-colors">Dismiss</button>
+                         </div>
+                      </div>
+                    ))
+                 )}
               </div>
 
-              {/* Cart Footer / Checkout */}
+              {/* Checkout Footer */}
               {cart.length > 0 && (
-                <div className="p-8 border-t border-gray-100 bg-[#fdfbf7] flex flex-col gap-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-sans text-gray-500 font-medium">Subtotal</span>
-                    <span className="font-serif text-3xl font-bold text-gray-900">{cartTotal} EGP</span>
-                  </div>
-                  
-                  <button
-                    onClick={handleWhatsAppCheckout}
-                    className="flex items-center justify-center gap-3 w-full rounded-full bg-[#25D366] px-8 py-5 font-sans text-base font-bold text-white shadow-xl hover:scale-[1.02] transition-all"
-                  >
-                    <MessageCircle size={20} />
-                    Confirm via WhatsApp
-                  </button>
-
-                  <button
-                    onClick={handleEmailCheckout}
-                    className="flex items-center justify-center gap-3 w-full rounded-full bg-gray-900 px-8 py-5 font-sans text-base font-bold text-white shadow-xl hover:scale-[1.02] transition-all"
-                  >
-                    <Send size={20} />
-                    Confirm via Email
-                  </button>
-                  
-                  <p className="text-center text-[10px] text-gray-400 uppercase tracking-[0.2em] font-sans pt-2">
-                    Our team will contact you shortly to finalize your magical order.
-                  </p>
+                <div className="mt-16 space-y-8 pt-10 border-t border-stone-100">
+                   <div className="flex items-end justify-between">
+                      <span className="font-sans text-stone-400 font-bold tracking-widest uppercase text-[10px]">TOTAL ARTIFACTS</span>
+                      <span className="font-serif text-5xl font-bold text-stone-900 leading-none">{cartTotal} <span className="text-sm font-sans tracking-widest text-[#c2c384]">EGP</span></span>
+                   </div>
+                   
+                   <div className="flex flex-col gap-4">
+                      <button
+                        onClick={handleWhatsAppCheckout}
+                        className="w-full bg-[#25D366] text-white py-6 rounded-full font-sans font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-3 shadow-xl hover:shadow-[#25D366]/20 transition-all hover:scale-[1.02] active:scale-95"
+                      >
+                         <MessageCircle size={20} />
+                         Confirm via WhatsApp
+                      </button>
+                      <button
+                        onClick={handleEmailCheckout}
+                        className="w-full bg-stone-900 text-white py-6 rounded-full font-sans font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-3 shadow-xl hover:shadow-black/20 transition-all hover:scale-[1.02] active:scale-95"
+                      >
+                         <Send size={20} />
+                         Confirm via Email
+                      </button>
+                   </div>
+                   <p className="text-center font-sans text-[10px] text-stone-300 uppercase tracking-widest leading-relaxed">
+                      Our curators will contact you within 24 hours to finalize your collection delivery.
+                   </p>
                 </div>
               )}
             </motion.div>
@@ -486,10 +496,11 @@ export default function ShopPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#e27d60]"></div>
+        <div className="w-16 h-[1px] bg-stone-200 animate-pulse" />
       </div>
     }>
       <ShopContent />
+      <BrandFooter />
     </Suspense>
   );
 }

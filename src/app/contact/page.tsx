@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
 import Navbar from "@/components/Navbar";
+import BrandFooter from "@/components/BrandFooter";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -151,7 +152,7 @@ export default function ContactPage() {
 
         </div>
       </section>
-
+      <BrandFooter />
     </main>
   );
 }

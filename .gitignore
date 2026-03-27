@@ -18,5 +18,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Brain / Artifacts (Optional: keeping these since they are outside project but sometimes leak)
+# Brain / Artifacts
 /brain/
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Internal Design Files (Stitch/AI)
+stitch.html
+stitch.json
+next-prompt.md
+DESIGN.md

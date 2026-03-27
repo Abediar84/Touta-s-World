@@ -1,152 +1,221 @@
 "use client";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
 import Navbar from "@/components/Navbar";
+import BrandFooter from "@/components/BrandFooter";
 
-// Team data is now redundant as we are using a narrative approach
+const cinemaEase = [0.16, 1, 0.3, 1] as const;
 
 export default function TeamPage() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
   return (
-    <main className="min-h-screen w-full bg-[#fafafa] overflow-hidden leading-relaxed">
+    <main ref={containerRef} className="min-h-screen w-full bg-[#fafafa] overflow-hidden leading-relaxed scroll-smooth">
       <Navbar />
       
-      {/* 1. Page Hero (Image Background) */}
-      <section className="relative w-full h-[70vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      {/* 1. Cinematic Parallax Hero */}
+      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        {/* Parallax Background Wrapper */}
+        <motion.div 
+          style={{ y: parallaxY }} 
+          className="absolute inset-0 z-0"
+        >
           <Image 
-            src="/touta_team_1.png" 
+            src="/Touta-s-World/touta_team_1.png" 
             alt="The Team Behind Touta" 
             fill 
-            className="object-cover"
+            className="object-cover scale-110"
             priority
           />
-          {/* Extra Layer (Overlay) */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
-        </div>
+          {/* Grainy Texture Overlay */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] mix-blend-multiply opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa] via-transparent to-black/20" />
+        </motion.div>
 
         <motion.div
-          className="relative z-10 max-w-3xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          style={{ opacity: headerOpacity }}
+          className="relative z-10 max-w-4xl"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: cinemaEase }}
         >
-          <span className="inline-flex items-center gap-2 mb-6 text-white/80 font-sans font-bold uppercase tracking-[0.3em] text-xs">
-            <span className="w-8 h-[1px] bg-white/50 inline-block" />
-            Our People
-          </span>
-          <h1 className="font-serif text-6xl md:text-8xl font-bold text-white mb-8 leading-tight">
-            The Team <br/>Behind <BrandText className="text-[#c2c384]">Touta</BrandText>
+          <motion.span 
+            className="inline-flex items-center gap-3 mb-8 text-white/70 font-sans font-bold uppercase tracking-[0.5em] text-[10px]"
+            initial={{ letterSpacing: "1em", opacity: 0 }}
+            animate={{ letterSpacing: "0.5em", opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.2 }}
+          >
+            <span className="w-12 h-[1px] bg-white/30" />
+            A COLLECTIVE VISION
+            <span className="w-12 h-[1px] bg-white/30" />
+          </motion.span>
+          <h1 className="font-serif text-6xl md:text-[7rem] font-bold text-white mb-8 leading-[0.9] tracking-tighter">
+            The Team <br/>Behind <BrandText className="text-[#c2c384] italic">Touta</BrandText>
           </h1>
-          <p className="font-sans text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto font-light">
-            A collective of creators and dreamers dedicated to bringing <span className="italic font-medium text-white">magic</span> back to learning.
+          <p className="font-sans text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
+            Where Egyptian heritage meets <span className="italic font-medium text-white">modern curiosity</span> through the eyes of 17 creators.
           </p>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent" />
         </motion.div>
       </section>
 
-      {/* Lead Narrative (Graduation Project Story) */}
-      <motion.section 
-        className="relative w-full max-w-4xl mx-auto px-6 pt-24 pb-12"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="font-sans text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-[#c2c384] pl-8 py-2">
-          We are a team of graduating students from the Canadian International University,
-          majoring in Public Relations and Advertising within Mass Communications. What
-          began as a graduation project soon grew into something far more meaningful, a
-          shared vision to create something that truly matters.
-        </p>
-      </motion.section>
-
-
-      {/* Team Narrative Section */}
-      <section className="w-full px-6 py-24 bg-white">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-
-            {/* Team Kids Illustration (Related to Mission) */}
-            <div className="relative aspect-[21/9] w-full max-w-4xl mx-auto -mb-4">
-              <Image 
-                src="/touta_team_kids.svg" 
-                alt="Touta Team Kids Illustration" 
-                fill 
-                className="object-contain"
-              />
-            </div>
-
-            <div className="py-8 text-center bg-[#fdfbf7] rounded-3xl border border-gray-100 px-6">
-              <h3 className="font-serif text-3xl md:text-4xl text-gray-900 leading-tight">
-                &quot;If we were still kids, <BrandText className="text-[#e27d60]">Touta</BrandText> would be the place where <span className="text-[#c2c384] italic">learning felt like magic.</span>&quot;
-              </h3>
-              <p className="mt-4 font-sans text-lg text-gray-500 font-medium uppercase tracking-[0.2em]">
-                That feeling guided us through every step of this journey.
+      {/* 2. Editorial Narrative Section (Staggered Layout) */}
+      <section className="relative w-full py-32 px-6 md:px-20 bg-[#fafafa]">
+        {/* Artistic Background Element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#c2c384]/5 -skew-x-12 transform origin-top pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto space-y-40">
+          
+          {/* Chapter One: The Genesis */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="font-sans text-[#c2c384] font-bold text-xs uppercase tracking-[.3em]">CHAPTER 01</span>
+              <h2 className="font-serif text-4xl md:text-5xl leading-tight text-stone-800">
+                Born from <br/> a Shared Dream
+              </h2>
+              <p className="font-sans text-lg text-stone-600 leading-relaxed font-light">
+                We are a team of graduating students from the Canadian International University, majoring in Public Relations and Advertising. What began as a graduation project grew into a shared mission to bring magic back to learning.
               </p>
-            </div>
+            </motion.div>
+            <motion.div 
+              className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: cinemaEase }}
+            >
+              <Image src="/Touta-s-World/touta_story_hero.png" alt="Genesis" fill className="object-cover" />
+              <div className="absolute inset-0 border-[20px] border-white/10 pointer-events-none rounded-[2rem]" />
+            </motion.div>
+          </div>
 
-            <p className="font-sans text-lg text-gray-600 leading-relaxed">
-              <BrandText className="text-[#e27d60]">Touta</BrandText> was created from our deep belief in the power of storytelling, the kind of
-              storytelling that stays with a child, shapes their imagination, and becomes part of
-              how they see the world. We wanted to create a companion, a presence in a child&apos;s
-              life that feels comforting, engaging, and full of wonder.
-            </p>
-
-            <p className="font-sans text-lg text-gray-600 leading-relaxed">
-              As a team, we poured our hearts into building something that could transform
-              everyday screen time into a more meaningful experience, something that does not
-              just pass time, but adds value to it. We believe that what children watch and listen to
-              should leave them happier, more curious, and more connected to the world
-              around them.
-            </p>
-
-            <div className="relative p-10 bg-gradient-to-br from-[#c2c384]/10 to-transparent rounded-3xl overflow-hidden border border-[#c2c384]/20">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <span className="text-8xl">✨</span>
-              </div>
-              <p className="font-sans text-lg text-gray-600 leading-relaxed relative z-10">
-                Seventeen students dedicated themselves to this project, giving their time,
-                creativity, and passion every single day. Behind <BrandText className="text-[#e27d60]">Touta</BrandText> is a team that truly cares
-                about children, about their growth, and about creating moments that feel special.
+          {/* Chapter Two: The Mission (Asymmetric) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center flex-row-reverse">
+             <motion.div 
+              className="md:order-2 space-y-8 pl-0 md:pl-16"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="font-sans text-[#e27d60] font-bold text-xs uppercase tracking-[.3em]">CHAPTER 02</span>
+              <h2 className="font-serif text-4xl md:text-5xl leading-tight text-stone-800">
+                Transforming <br/> Screen Time
+              </h2>
+              <p className="font-sans text-lg text-stone-600 leading-relaxed font-light">
+                As a team, we poured our hearts into building something that could transform everyday screen time into a more meaningful experience. We believe children should leave every discovery happier, more curious, and more connected to their world.
               </p>
-            </div>
-
-            <div className="text-center space-y-4 pt-8">
-              <p className="font-script text-4xl text-[#c2c384]">Because this was never just about completing a project.</p>
-              <p className="font-serif text-3xl font-bold text-gray-900">
-                It was about creating something that could become a small, <br className="hidden md:block" />
-                <span className="text-[#e27d60]">beautiful part of a child&apos;s life.</span>
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+            <motion.div 
+              className="md:order-1 relative p-12 bg-white rounded-[3rem] shadow-xl border border-stone-100"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+               <div className="relative aspect-video w-full mb-8">
+                  <Image src="/Touta-s-World/touta_team_kids.svg" alt="Mission" fill className="object-contain" />
+               </div>
+               <div className="text-center italic text-stone-400 font-sans text-sm tracking-widest uppercase">
+                  Creativity in Motion
+               </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Join Us CTA */}
-      <section className="w-full py-24 bg-[#c2c384] text-center px-6">
+      {/* 3. The "Seventeen" Mosaic Tribute */}
+      <section className="w-full py-32 bg-stone-900 overflow-hidden relative">
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/stone-texture.png')] bg-repeat" />
+        
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <motion.h2 
+              className="font-serif text-5xl md:text-7xl text-white mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              The Seventeen
+            </motion.h2>
+            <p className="text-stone-400 font-sans tracking-widest uppercase text-xs">A Collective of Visionaries & Storytellers</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[...Array(17)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="group relative aspect-[3/4] bg-stone-800/50 rounded-2xl border border-stone-800 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center opacity-20 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+                   <Image src="/Touta-s-World/mascot-laying.png" alt="Student" fill className="object-cover scale-125" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                   <span className="text-white font-serif text-lg">Student #{i + 1}</span>
+                   <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest">CIU Class of 2024</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Closing Vision */}
+      <section className="w-full py-40 bg-[#fafafa] relative flex flex-col items-center text-center px-6">
         <motion.div
-          className="max-w-2xl mx-auto"
+          className="max-w-3xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif text-5xl font-bold text-white mb-6">Want to join our team?</h2>
-          <p className="font-sans text-lg text-white/80 mb-10">We are always looking for passionate people who share our love for childhood imagination and learning.</p>
-          <a href="mailto:hello@toutasworld.com" className="inline-block rounded-full bg-white px-12 py-5 font-sans text-lg font-bold text-[#c2c384] shadow-xl hover:scale-105 transition-transform">
-            Get in Touch ✉️
-          </a>
+          <span className="text-6xl mb-12 block">✨</span>
+          <h2 className="font-serif text-5xl font-bold text-stone-900 mb-8 italic">
+            &quot;Learning should feel like <span className="text-[#c2c384]">magic</span>.&quot;
+          </h2>
+          <p className="font-sans text-xl text-stone-500 font-light mb-16 leading-relaxed">
+            Seventeen students dedicated themselves to this project, giving their time, creativity, and passion to build something that could become a beautiful part of a child&apos;s life.
+          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+             <Link href="/contact" className="rounded-full bg-[#1a1a1a] text-white px-12 py-5 font-sans font-bold hover:scale-105 transition-transform shadow-xl">
+                Collaborate With Us
+             </Link>
+             <a href="mailto:hello@toutasworld.com" className="text-stone-600 font-sans font-bold border-b-2 border-stone-200 hover:border-[#c2c384] transition-colors pb-1">
+                hello@toutasworld.com
+             </a>
+          </div>
         </motion.div>
       </section>
 
+      <BrandFooter />
     </main>
   );
 }
