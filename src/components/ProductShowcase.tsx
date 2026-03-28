@@ -120,14 +120,14 @@ export default function ProductShowcase() {
                 <div className="w-full aspect-[4/5] relative bg-stone-50 rounded-2xl mb-8 overflow-hidden">
                   <motion.div
                     className="w-full h-full relative"
-                    whileHover={{ scale: 1.05, rotate: 1 }}
+                    whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.8, ease: cinemaEase }}
                   >
                     <Image 
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-contain p-6 transition-all duration-1000" 
+                      className="object-contain transition-all duration-1000" 
                     />
                   </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

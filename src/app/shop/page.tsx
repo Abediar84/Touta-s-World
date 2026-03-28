@@ -354,7 +354,7 @@ function ShopContent() {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-contain p-8 transition-transform duration-1000 group-hover:scale-105"
+                      className="object-contain transition-transform duration-1000 group-hover:scale-105"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                    {/* Add to Cart Floating Button */}
@@ -435,7 +435,7 @@ function ShopContent() {
                     cart.map((item) => (
                       <div key={item.id} className="grid grid-cols-[100px_1fr] gap-8">
                          <div className={`relative aspect-square rounded-2xl ${item.bg} overflow-hidden shadow-sm`}>
-                            <Image src={item.image} alt={item.name} fill className="object-contain p-4 scale-110" />
+                            <Image src={item.image} alt={item.name} fill className="object-contain" />
                          </div>
                          <div className="space-y-4">
                             <h3 className="font-serif text-xl font-bold text-stone-800 leading-tight">{item.name}</h3>
