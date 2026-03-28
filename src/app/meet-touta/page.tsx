@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
@@ -200,36 +200,22 @@ export default function MeetToutaPage() {
     </main>
   );
 }
-
 const StoryBlock = ({ chapter, idx }: { chapter: any; idx: number }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1, 0.95]);
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   return (
     <motion.div
-      ref={ref}
       className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-16 md:gap-32`}
-      style={{ opacity: textOpacity }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1, ease: cinemaEase }}
     >
       {/* Dynamic Image Container */}
       <div className="flex-1 w-full filter drop-shadow-[0_60px_100px_-20px_rgba(0,0,0,0.15)]">
-        <motion.div
-          style={{ scale: imgScale }}
-          className="relative aspect-video rounded-[2.5rem] overflow-hidden"
-        >
-          <motion.div style={{ y: imgY }} className="absolute inset-0">
-             <Image src={chapter.image} alt={chapter.title} fill className="object-contain" />
-          </motion.div>
+        <div className="relative aspect-video rounded-[2.5rem] overflow-hidden">
+          <Image src={chapter.image} alt={chapter.title} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
           <div className="absolute inset-0 border-[1px] border-white/20 pointer-events-none" />
-        </motion.div>
+        </div>
       </div>
 
       {/* Narrative Container */}
