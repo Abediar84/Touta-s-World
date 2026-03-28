@@ -225,7 +225,7 @@ const StoryBlock = ({ chapter, idx }: { chapter: any; idx: number }) => {
           className="relative aspect-[4/5] md:aspect-[3/4] rounded-[2.5rem] overflow-hidden"
         >
           <motion.div style={{ y: imgY }} className="absolute inset-0">
-             <Image src={chapter.image} alt={chapter.title} fill className="object-cover scale-125" />
+             <Image src={chapter.image} alt={chapter.title} fill className="object-contain" />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
           <div className="absolute inset-0 border-[1px] border-white/20 pointer-events-none" />
