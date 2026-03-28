@@ -117,7 +117,7 @@ export default function ProductShowcase() {
               <div className={`relative bg-white rounded-[2rem] p-8 border border-stone-100 ${product.hoverColor} transition-all duration-700 flex flex-col items-center text-center h-full hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2`}>
                 
                 {/* Image Container */}
-                <div className="w-full aspect-[4/5] relative bg-stone-50 rounded-2xl mb-8 overflow-hidden">
+                <div className="w-full aspect-video relative bg-stone-50 rounded-2xl mb-8 overflow-hidden">
                   <motion.div
                     className="w-full h-full relative"
                     whileHover={{ scale: 1.03 }}

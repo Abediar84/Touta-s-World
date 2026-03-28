@@ -349,7 +349,7 @@ function ShopContent() {
                 className="group flex flex-col h-full"
               >
                 {/* Image Container */}
-                <div className={`relative aspect-[5/4] ${product.bg} rounded-[2.5rem] overflow-hidden mb-10 transition-all duration-700 shadow-sm group-hover:shadow-2xl group-hover:-translate-y-2`}>
+                <div className={`relative aspect-video ${product.bg} rounded-[2.5rem] overflow-hidden mb-10 transition-all duration-700 shadow-sm group-hover:shadow-2xl group-hover:-translate-y-2`}>
                    <Image
                       src={product.image}
                       alt={product.name}

@@ -222,7 +222,7 @@ const StoryBlock = ({ chapter, idx }: { chapter: any; idx: number }) => {
       <div className="flex-1 w-full filter drop-shadow-[0_60px_100px_-20px_rgba(0,0,0,0.15)]">
         <motion.div
           style={{ scale: imgScale }}
-          className="relative aspect-[4/5] md:aspect-[3/4] rounded-[2.5rem] overflow-hidden"
+          className="relative aspect-video rounded-[2.5rem] overflow-hidden"
         >
           <motion.div style={{ y: imgY }} className="absolute inset-0">
              <Image src={chapter.image} alt={chapter.title} fill className="object-contain" />
