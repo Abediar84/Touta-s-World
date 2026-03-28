@@ -6,14 +6,20 @@
   --color-terracotta: #e27d60; /* Added warm accent */
   --color-sand: #e8a87c; /* Added warm accent */
   
-  --color-background: #fafafa;
-  --color-surface: #ffffff;
-  --color-foreground: #2d3748;
+  --color-background: #fbf9f5;
+  --color-surface: #fbf9f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f3ef;
+  --color-surface-container: #efeeea;
+  --color-surface-container-high: #eae8e4;
+  --color-surface-container-highest: #e4e2de;
+  --color-on-surface: #1b1c1a;
+  --color-outline-variant: rgba(219, 193, 186, 0.15);
   
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
   --font-script: var(--font-dancing);
-  --font-have-heart: var(--font-dancing);
+  --font-have-heart: var(--font-have-heart);
   --font-brand: var(--font-have-heart);
 }
 

@@ -66,7 +66,7 @@ export default function Hero() {
         >
           Begin your journey<br />
           with{" "}
-          <span className="font-brand italic text-[#e27d60]">Touta</span>
+          <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
         </motion.h1>
 
         {/* Sub-text */}

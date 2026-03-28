@@ -58,13 +58,13 @@ module.exports = {
         "primary-fixed": "#ffdbd1",
       },
       fontFamily: {
-        sans: ["var(--font-montserrat)", "sans-serif"],
-        serif: ["var(--font-playfair)", "serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
         brand: ["var(--font-have-heart)", "cursive"],
         script: ["var(--font-dancing)", "cursive"],
-        headline: ["Noto Serif", "serif"],
-        body: ["Manrope", "sans-serif"],
-        label: ["Manrope", "sans-serif"]
+        headline: ["var(--font-serif)", "serif"],
+        body: ["var(--font-sans)", "sans-serif"],
+        label: ["var(--font-sans)", "sans-serif"]
       },
     },
   },

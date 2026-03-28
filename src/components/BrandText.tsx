@@ -11,7 +11,7 @@ interface BrandTextProps {
  */
 export const BrandText = ({ children, className = "" }: BrandTextProps) => {
   return (
-    <span className={`font-brand inline-block font-normal ${className}`}>
+    <span className={`font-brand inline-block !font-normal ${className}`}>
       {children}
     </span>
   );

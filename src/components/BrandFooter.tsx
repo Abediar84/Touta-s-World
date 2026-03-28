@@ -10,17 +10,20 @@ export default function BrandFooter() {
         </div>
         
         <div className="flex flex-wrap justify-center gap-8 font-sans text-sm tracking-wide uppercase">
+          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
+            Home
+          </Link>
+          <Link href="/meet-touta" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
+            The Story
+          </Link>
           <Link href="/shop" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
             The Gallery
           </Link>
-          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
-            Privacy Parchment
-          </Link>
-          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
-            Terms of Discovery
+          <Link href="/team" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
+            The Creators
           </Link>
           <Link href="/contact" className="text-stone-500 dark:text-stone-400 hover:text-[#99452c] dark:hover:text-white transition-colors">
-            Contact the Curator
+            Contact
           </Link>
         </div>
 

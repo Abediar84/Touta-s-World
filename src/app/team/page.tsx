@@ -60,7 +60,7 @@ export default function TeamPage() {
             <span className="w-12 h-[1px] bg-white/30" />
           </motion.span>
           <h1 className="font-serif text-6xl md:text-[7rem] font-bold text-white mb-8 leading-[0.9] tracking-tighter">
-            The Team <br/>Behind <BrandText className="text-[#c2c384] italic">Touta</BrandText>
+            The Team <br/>Behind <BrandText className="text-[#c2c384] italic !font-normal">Touta</BrandText>
           </h1>
           <p className="font-sans text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
             Where Egyptian heritage meets <span className="italic font-medium text-white">modern curiosity</span> through the eyes of 17 creators.
@@ -102,13 +102,13 @@ export default function TeamPage() {
               </p>
             </motion.div>
             <motion.div 
-              className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
+              className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: cinemaEase }}
             >
-              <Image src="/Touta-s-World/touta_story_hero.png" alt="Genesis" fill className="object-cover" />
+              <Image src="/Touta-s-World/touta_story_hero.png" alt="Genesis" fill className="object-contain" />
               <div className="absolute inset-0 border-[20px] border-white/10 pointer-events-none rounded-[2rem]" />
             </motion.div>
           </div>

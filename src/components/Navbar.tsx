@@ -30,9 +30,9 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: cinemaEase }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-500 rounded-full px-6 md:px-10 py-4 shadow-[0_32px_64px_-4px_rgba(27,28,26,0.06)] backdrop-blur-2xl border border-white/20 ${
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-500 rounded-full px-6 md:px-10 py-4 shadow-[0_32px_64px_-4px_rgba(27,28,26,0.06)] backdrop-blur-[32px] border border-white/10 ${
           isScrolled
-            ? "bg-white/85 dark:bg-stone-900/85 mt-2"
+            ? "bg-white/70 dark:bg-stone-900/70 mt-2"
             : "bg-white/10 dark:bg-stone-900/10 mt-6"
         }`}
       >

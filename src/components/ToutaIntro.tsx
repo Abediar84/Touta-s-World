@@ -44,7 +44,7 @@ export default function ToutaIntro() {
                     src="/Touta-s-World/mascot-peeking.png"
                     alt="Touta Character" 
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    className="object-contain transition-transform duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-transparent pointer-events-none" />
                 </div>
@@ -75,7 +75,7 @@ export default function ToutaIntro() {
               <span className="font-sans text-[#c2c384] font-bold tracking-[0.4em] text-xs uppercase">STORYTELLER</span>
               <h2 className="font-serif text-5xl md:text-7xl font-medium text-[#1a1a1a] leading-tight tracking-tight">
                 Hi there, <br/>
-                <span className="font-brand italic text-[#c2c384] text-[4rem] md:text-[6.5rem] leading-none">I&apos;m Touta!</span>
+                <span className="font-brand italic text-[#c2c384] text-[4rem] md:text-[6.5rem] leading-none !font-normal">I&apos;m Touta!</span>
               </h2>
             </div>
             
