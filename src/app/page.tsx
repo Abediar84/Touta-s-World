@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ToutaIntro from "@/components/ToutaIntro";
 import ProductShowcase from "@/components/ProductShowcase";
+import TeamPreview from "@/components/TeamPreview";
 import QuoteBlock from "@/components/QuoteBlock";
 import BrandFooter from "@/components/BrandFooter";
 
@@ -20,8 +21,11 @@ export default function Home() {
       
       {/* 3. Products/Artifacts Collection */}
       <ProductShowcase />
+
+      {/* 4. Team Preview */}
+      <TeamPreview />
       
-      {/* 4. Magic Quote Block */}
+      {/* 5. Magic Quote Block */}
       <QuoteBlock />
 
       {/* Footer */}
