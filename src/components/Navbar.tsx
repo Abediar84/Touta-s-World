@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const cinemaEase = [0.16, 1, 0.3, 1] as const;
@@ -9,6 +10,8 @@ const cinemaEase = [0.16, 1, 0.3, 1] as const;
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isSolid = isScrolled || pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -31,7 +34,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: cinemaEase }}
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-500 rounded-full px-6 md:px-10 py-4 shadow-[0_32px_64px_-4px_rgba(27,28,26,0.06)] backdrop-blur-[32px] border border-white/10 ${
-          isScrolled
+          isSolid
             ? "bg-white/70 dark:bg-stone-900/70 mt-2"
             : "bg-white/10 dark:bg-stone-900/10 mt-6"
         }`}
@@ -61,7 +64,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`relative group transition-colors ${
-                  isScrolled
+                  isSolid
                     ? "text-stone-700 hover:text-[#E27D60]"
                     : "text-white/85 hover:text-white"
                 }`}
@@ -94,15 +97,15 @@ export default function Navbar() {
             >
               <motion.div
                 animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }}
-                className={`w-6 h-[1.5px] ${isScrolled ? "bg-stone-900" : "bg-white"} origin-center`}
+                className={`w-6 h-[1.5px] ${isSolid ? "bg-stone-900" : "bg-white"} origin-center`}
               />
               <motion.div
                 animate={{ opacity: menuOpen ? 0 : 1 }}
-                className={`w-6 h-[1.5px] ${isScrolled ? "bg-stone-900" : "bg-white"}`}
+                className={`w-6 h-[1.5px] ${isSolid ? "bg-stone-900" : "bg-white"}`}
               />
               <motion.div
                 animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
-                className={`w-6 h-[1.5px] ${isScrolled ? "bg-stone-900" : "bg-white"} origin-center`}
+                className={`w-6 h-[1.5px] ${isSolid ? "bg-stone-900" : "bg-white"} origin-center`}
               />
             </button>
           </div>
