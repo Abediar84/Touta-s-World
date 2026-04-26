@@ -345,9 +345,9 @@ function ShopContent() {
             <Image 
               src={
                 activeCategory === "Notebooks" ? "/Touta-s-World/Shop_Notebook_Touta_Edition_Notebook.png" :
-                activeCategory === "Puzzles" ? "/Touta-s-World/Shop_Puzzle_Green_Touta_Edition.png" :
-                activeCategory === "Pins" ? "/Touta-s-World/Shop_Pins_Storytelling_Magic_Pin.png" :
-                activeCategory === "Coloring Books" ? "/Touta-s-World/Shop_Coloring_Book_Green_Touta_Coloring_Book.png" :
+                activeCategory === "Puzzles" ? "/Touta-s-World/Shop_Puzzle_Cover.png" :
+                activeCategory === "Pins" ? "/Touta-s-World/Shop_Pins_Cover.png" :
+                activeCategory === "Coloring Books" ? "/Touta-s-World/Shop_Coloring_Book_Cover.png" :
                 "/Touta-s-World/Shop_Cover_All.png"
               }
               alt={activeCategory}
