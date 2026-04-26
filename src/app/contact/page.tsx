@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { BrandText } from "@/components/BrandText";
 import Navbar from "@/components/Navbar";
 import BrandFooter from "@/components/BrandFooter";
@@ -12,7 +11,7 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isBot) return; // Bot detected, silently ignore
+    if (isBot) return; 
     setSubmitted(true);
   };
 
@@ -64,9 +63,11 @@ export default function ContactPage() {
 
             <div className="flex flex-col gap-6">
               {[
-                { icon: "✉️", label: "Email", value: "hello@toutasworld.com" },
-                { icon: "📍", label: "Location", value: "Cairo, Egypt" },
-                { icon: "📱", label: "Follow Us", value: "@toutasworld" },
+                { icon: "✉️", label: "Email", value: "toutaaa546@gmail.com" },
+                { icon: "📱", label: "WhatsApp", value: "01033949360" },
+                { icon: "✨", label: "Instagram", value: "@touta_storytelling" },
+                { icon: "👤", label: "Facebook", value: "@touta" },
+                { icon: "🎵", label: "TikTok", value: "@touta_storytelling" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#c2c384]/15 flex items-center justify-center text-xl flex-shrink-0">

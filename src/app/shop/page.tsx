@@ -34,18 +34,18 @@ const ALL_PRODUCTS: Product[] = [
     id: "nb-1",
     name: "Touta Edition Notebook",
     category: "Notebooks",
-    price: 350,
+    price: 35,
     slogan: "Your next favorite notebook is waiting — get yours now.",
     image: "/Touta-s-World/notebook.png",
     bg: "bg-[#edf3e3]",
     accent: "#c2c384",
   },
-  // 2. Touta Puzzle
+  // 2. Touta Puzzles
   {
     id: "pz-1",
     name: "Green Touta Edition Puzzle",
     category: "Puzzles",
-    price: 450,
+    price: 45,
     slogan: "Small pieces, big ideas growing together.",
     image: "/Touta-s-World/puzzle.png",
     bg: "bg-[#fdf0e4]",
@@ -55,30 +55,30 @@ const ALL_PRODUCTS: Product[] = [
     id: "pz-2",
     name: "In the Pyramids Puzzle",
     category: "Puzzles",
-    price: 450,
+    price: 45,
     slogan: "A journey through mystery, built piece by piece.",
-    image: "/Touta-s-World/puzzle.png",
-    bg: "bg-[#fdf0e4]",
+    image: "/Touta-s-World/hero-pyramids.png",
+    bg: "bg-[#fef9c3]/30",
     accent: "#e8a87c",
   },
   {
     id: "pz-3",
     name: "In Class Puzzle",
     category: "Puzzles",
-    price: 450,
+    price: 45,
     slogan: "Where curiosity comes together, one piece at a time.",
-    image: "/Touta-s-World/puzzle.png",
-    bg: "bg-[#fdf0e4]",
+    image: "/Touta-s-World/about-classroom.png",
+    bg: "bg-blue-50",
     accent: "#e8a87c",
   },
   {
     id: "pz-4",
     name: "In the Zoo Puzzle",
     category: "Puzzles",
-    price: 450,
+    price: 45,
     slogan: "Where every piece brings the wild to life.",
-    image: "/Touta-s-World/puzzle.png",
-    bg: "bg-[#fdf0e4]",
+    image: "/Touta-s-World/touta_team_kids.svg",
+    bg: "bg-green-50",
     accent: "#e8a87c",
   },
   // 3. Touta Pins
@@ -86,7 +86,7 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-1",
     name: "Storytelling Magic Pin",
     category: "Pins",
-    price: 150,
+    price: 15,
     slogan: "Where every story begins with a spark.",
     image: "/Touta-s-World/pins.png",
     bg: "bg-[#e8ecf3]",
@@ -96,40 +96,40 @@ const ALL_PRODUCTS: Product[] = [
     id: "pin-2",
     name: "In the Pyramids Pin",
     category: "Pins",
-    price: 150,
+    price: 15,
     slogan: "A tiny piece of adventure from a world of ancient wonder.",
-    image: "/Touta-s-World/pins.png",
-    bg: "bg-[#e8ecf3]",
+    image: "/Touta-s-World/mascot-peeking.png",
+    bg: "bg-stone-100",
     accent: "#aab5cc",
   },
   {
     id: "pin-3",
     name: "In the Garden Pin",
     category: "Pins",
-    price: 150,
+    price: 15,
     slogan: "A small symbol of growing ideas and gentle care.",
-    image: "/Touta-s-World/pins.png",
-    bg: "bg-[#e8ecf3]",
+    image: "/Touta-s-World/mascot-laying.png",
+    bg: "bg-emerald-50",
     accent: "#aab5cc",
   },
   {
     id: "pin-4",
     name: "In Class Pin",
     category: "Pins",
-    price: 150,
+    price: 15,
     slogan: "A little reminder that learning can be fun.",
-    image: "/Touta-s-World/pins.png",
-    bg: "bg-[#e8ecf3]",
+    image: "/Touta-s-World/logo.png",
+    bg: "bg-white",
     accent: "#aab5cc",
   },
   {
     id: "pin-5",
     name: "Touta Logo Pin",
     category: "Pins",
-    price: 150,
+    price: 15,
     slogan: "The magic of Touta, carried with you everywhere.",
-    image: "/Touta-s-World/pins.png",
-    bg: "bg-[#e8ecf3]",
+    image: "/Touta-s-World/logo.png",
+    bg: "bg-stone-50",
     accent: "#aab5cc",
   },
   // 4. Touta Coloring Books
@@ -137,7 +137,7 @@ const ALL_PRODUCTS: Product[] = [
     id: "cb-1",
     name: "Green Touta Coloring Book",
     category: "Coloring Books",
-    price: 250,
+    price: 25,
     slogan: "Create, color, and grow something beautiful.",
     image: "/Touta-s-World/coloring.png",
     bg: "bg-[#fceae7]",
@@ -147,30 +147,30 @@ const ALL_PRODUCTS: Product[] = [
     id: "cb-2",
     name: "In the Pyramids Coloring Book",
     category: "Coloring Books",
-    price: 250,
+    price: 25,
     slogan: "Uncover ancient wonders, one color at a time",
-    image: "/Touta-s-World/coloring.png",
-    bg: "bg-[#fceae7]",
+    image: "/Touta-s-World/touta_story_1.png",
+    bg: "bg-amber-50",
     accent: "#e5b3aa",
   },
   {
     id: "cb-3",
     name: "In the Zoo Coloring Book",
     category: "Coloring Books",
-    price: 250,
+    price: 25,
     slogan: "A colorful adventure where every page meets a new friend.",
-    image: "/Touta-s-World/coloring.png",
-    bg: "bg-[#fceae7]",
+    image: "/Touta-s-World/touta_story_4.png",
+    bg: "bg-sky-50",
     accent: "#e5b3aa",
   },
   {
     id: "cb-4",
     name: "Our Body Coloring Book",
     category: "Coloring Books",
-    price: 250,
+    price: 25,
     slogan: "Discover the magic inside you through color and curiosity.",
-    image: "/Touta-s-World/coloring.png",
-    bg: "bg-[#fceae7]",
+    image: "/Touta-s-World/touta_story_6.png",
+    bg: "bg-rose-50",
     accent: "#e5b3aa",
   },
 ];
@@ -251,14 +251,14 @@ function ShopContent() {
     const message = encodeURIComponent(
       `Hi Touta Team! I'd like to place an order for the following items:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP\n\nPlease let me know the next steps!`
     );
-    window.open(`https://wa.me/201234567890?text=${message}`, "_blank"); // Placeholder
+    window.open(`https://wa.me/201033949360?text=${message}`, "_blank");
   };
 
   const handleEmailCheckout = () => {
     const body = encodeURIComponent(
       `Hi Touta Team!\n\nI'm interested in ordering the following items from the collection:\n\n${generateOrderSummary()}\n\nTotal: ${cartTotal} EGP\n\nPlease send me the confirmation and delivery details.`
     );
-    window.location.href = `mailto:hello@toutasworld.com?subject=New Collection Order&body=${body}`;
+    window.location.href = `mailto:toutaaa546@gmail.com?subject=New Collection Order&body=${body}`;
   };
 
   return (
@@ -329,6 +329,37 @@ function ShopContent() {
               {cat}
             </button>
           ))}
+        </div>
+      </section>
+
+      {/* Category Main Image / Feature */}
+      <section className="w-full px-6 py-10 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full h-[40vh] md:h-[60vh] rounded-[3rem] overflow-hidden group shadow-2xl"
+          >
+            <Image 
+              src={
+                activeCategory === "Notebooks" ? "/Touta-s-World/notebook.png" :
+                activeCategory === "Puzzles" ? "/Touta-s-World/puzzle.png" :
+                activeCategory === "Pins" ? "/Touta-s-World/pins.png" :
+                activeCategory === "Coloring Books" ? "/Touta-s-World/coloring.png" :
+                "/Touta-s-World/hero-pyramids.png"
+              }
+              alt={activeCategory}
+              fill
+              className="object-cover transition-transform duration-[2s] group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/10 to-transparent" />
+            <div className="absolute bottom-12 left-12">
+               <h2 className="font-serif text-5xl md:text-7xl text-white font-bold mb-2">{activeCategory}</h2>
+               <p className="font-sans text-white/70 text-sm tracking-widest uppercase">The heart of our curated artifacts</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

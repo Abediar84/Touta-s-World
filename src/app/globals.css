@@ -23,6 +23,13 @@
   --font-brand: var(--font-have-heart);
 }
 
+@layer utilities {
+  .font-arabic {
+    font-family: var(--font-arabic), "Noto Sans Arabic", sans-serif;
+    font-weight: 700;
+  }
+}
+
 .font-brand {
   font-family: var(--font-have-heart);
 }

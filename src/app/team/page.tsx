@@ -9,6 +9,13 @@ import BrandFooter from "@/components/BrandFooter";
 
 const cinemaEase = [0.16, 1, 0.3, 1] as const;
 
+const TEAM_MEMBERS = [
+  "Tasneem", "Jana", "Malak el gendy", "Fares", "Youssef arafa", 
+  "Habiba (toya)", "Jessie", "Rossete", "Nour mohamed", "Rawan", 
+  "Raneem", "Malak serry", "Shahd", "Nour mashhour", "Mohamed", 
+  "Mohamed", "Nourine"
+];
+
 export default function TeamPage() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -24,8 +31,8 @@ export default function TeamPage() {
       <Navbar />
       
       {/* 1. Cinematic Parallax Hero */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        {/* Parallax Background Wrapper */}
+      <section className="relative w-full h-[60vh] md:h-[80vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        {/* Parallax Background Wrapper - Landscape Optimized */}
         <motion.div 
           style={{ y: parallaxY }} 
           className="absolute inset-0 z-0"
@@ -34,11 +41,11 @@ export default function TeamPage() {
             src="/Touta-s-World/touta_team_1.png" 
             alt="The Team Behind Touta" 
             fill 
-            className="object-cover scale-110"
+            className="object-cover scale-105"
             priority
           />
           {/* Grainy Texture Overlay */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] mix-blend-multiply opacity-60" />
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px] mix-blend-multiply opacity-50" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa] via-transparent to-black/20" />
         </motion.div>
 
@@ -63,7 +70,7 @@ export default function TeamPage() {
             The Team <br/>Behind <BrandText className="text-[#c2c384] italic !font-normal">Touta</BrandText>
           </h1>
           <p className="font-sans text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto font-light tracking-wide">
-            Where Egyptian heritage meets <span className="italic font-medium text-white">modern curiosity</span> through the eyes of 17 creators.
+            Where Egyptian heritage meets <span className="italic font-medium text-white">modern curiosity</span> through the eyes of {TEAM_MEMBERS.length} creators.
           </p>
         </motion.div>
 
@@ -98,7 +105,7 @@ export default function TeamPage() {
                 Born from <br/> a Shared Dream
               </h2>
               <p className="font-sans text-lg text-stone-600 leading-relaxed font-light">
-                We are a team of graduating students from the Canadian International University, majoring in Public Relations and Advertising. What began as a graduation project grew into a shared mission to bring magic back to learning.
+                We are a team of graduating students from the 2026 CIC, majoring in Public Relations and Advertising. What began as a graduation project grew into a shared mission to bring magic back to learning.
               </p>
             </motion.div>
             <motion.div 
@@ -160,15 +167,15 @@ export default function TeamPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              The Seventeen
+              The {TEAM_MEMBERS.length}
             </motion.h2>
             <p className="text-stone-400 font-sans tracking-widest uppercase text-xs">A Collective of Visionaries & Storytellers</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[...Array(17)].map((_, i) => (
+            {TEAM_MEMBERS.map((name, i) => (
               <motion.div
-                key={i}
+                key={name + i}
                 className="group relative aspect-[3/4] bg-stone-800/50 rounded-2xl border border-stone-800 overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -176,12 +183,13 @@ export default function TeamPage() {
                 transition={{ delay: i * 0.05 }}
               >
                 <div className="absolute inset-0 flex items-center justify-center opacity-20 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
-                   <Image src="/Touta-s-World/mascot-laying.png" alt="Student" fill className="object-cover scale-125" />
+                   <Image src="/Touta-s-World/mascot-laying.png" alt={name} fill className="object-cover scale-125" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                   <span className="text-white font-serif text-lg">Student #{i + 1}</span>
-                   <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest">CIU Class of 2024</span>
+                    <span className="text-white/50 font-sans text-xs tracking-widest mb-1 block">{(i + 1).toString().padStart(2, '0')}</span>
+                    <span className="text-white font-serif text-lg">{name}</span>
+                    <span className="text-[#c2c384] font-sans text-[10px] uppercase tracking-widest">2026 CIC</span>
                 </div>
               </motion.div>
             ))}
@@ -202,14 +210,14 @@ export default function TeamPage() {
             &quot;Learning should feel like <span className="text-[#c2c384]">magic</span>.&quot;
           </h2>
           <p className="font-sans text-xl text-stone-500 font-light mb-16 leading-relaxed">
-            Seventeen students dedicated themselves to this project, giving their time, creativity, and passion to build something that could become a beautiful part of a child&apos;s life.
+            {TEAM_MEMBERS.length} students dedicated themselves to this project, giving their time, creativity, and passion to build something that could become a beautiful part of a child&apos;s life.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
              <Link href="/contact" className="rounded-full bg-[#1a1a1a] text-white px-12 py-5 font-sans font-bold hover:scale-105 transition-transform shadow-xl">
                 Collaborate With Us
              </Link>
-             <a href="mailto:hello@toutasworld.com" className="text-stone-600 font-sans font-bold border-b-2 border-stone-200 hover:border-[#c2c384] transition-colors pb-1">
-                hello@toutasworld.com
+             <a href="mailto:toutaaa546@gmail.com" className="text-stone-600 font-sans font-bold border-b-2 border-stone-200 hover:border-[#c2c384] transition-colors pb-1">
+                toutaaa546@gmail.com
              </a>
           </div>
         </motion.div>

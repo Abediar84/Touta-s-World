@@ -69,6 +69,18 @@ export default function Hero() {
           <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
         </motion.h1>
 
+        {/* Arabic Slogan */}
+        <motion.div
+          className="mt-2 md:mt-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.6, ease: cinemaEase }}
+        >
+          <span className="font-arabic font-bold text-4xl md:text-6xl text-[#c2c384] drop-shadow-lg">
+            وهنبتدي الحدودة
+          </span>
+        </motion.div>
+
         {/* Sub-text */}
         <motion.p
           className="font-sans text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light"
