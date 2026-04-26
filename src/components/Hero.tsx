@@ -43,7 +43,7 @@ export default function Hero() {
       {/* ── Hero Content ── */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 flex flex-col items-center gap-10 w-full px-2 sm:px-6 md:px-12 lg:px-16"
+        className="relative z-10 flex flex-col items-center gap-10 w-full px-2 sm:px-6 md:px-12 lg:px-16 mt-20 md:mt-32"
       >
         {/* Eyebrow label */}
         <motion.span
@@ -81,7 +81,7 @@ export default function Hero() {
         <div className="flex flex-col items-center mt-10 md:mt-24 gap-8">
           {/* Sub-text */}
           <motion.p
-            className="font-sans text-lg md:text-xl text-white max-w-2xl leading-relaxed font-light bg-black/40 backdrop-blur-md px-8 py-5 rounded-2xl border border-white/10 shadow-2xl text-center"
+            className="hidden sm:block font-sans text-lg md:text-xl text-white max-w-2xl leading-relaxed font-light bg-black/40 backdrop-blur-md px-8 py-5 rounded-2xl border border-white/10 shadow-2xl text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.65, ease: cinemaEase }}
