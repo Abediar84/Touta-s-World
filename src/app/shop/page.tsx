@@ -36,7 +36,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Notebooks",
     price: 35,
     slogan: "Your next favorite notebook is waiting — get yours now.",
-    image: "/Shop_Notebook_Touta_Edition_Notebook.png",
+    image: "/Touta-s-World/Shop_Notebook_Touta_Edition_Notebook.png",
     bg: "bg-[#edf3e3]",
     accent: "#c2c384",
   },
@@ -47,7 +47,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Puzzles",
     price: 45,
     slogan: "Small pieces, big ideas growing together.",
-    image: "/Shop_Puzzle_Green_Touta_Edition.png",
+    image: "/Touta-s-World/Shop_Puzzle_Green_Touta_Edition.png",
     bg: "bg-[#fdf0e4]",
     accent: "#e8a87c",
   },
@@ -57,7 +57,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Puzzles",
     price: 45,
     slogan: "A journey through mystery, built piece by piece.",
-    image: "/Shop_Puzzle_In_the_Pyramids_Edition.png",
+    image: "/Touta-s-World/Shop_Puzzle_In_the_Pyramids_Edition.png",
     bg: "bg-[#fef9c3]/30",
     accent: "#e8a87c",
   },
@@ -67,7 +67,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Puzzles",
     price: 45,
     slogan: "Where curiosity comes together, one piece at a time.",
-    image: "/Shop_Puzzle_In_Class_Edition.png",
+    image: "/Touta-s-World/Shop_Puzzle_In_Class_Edition.png",
     bg: "bg-blue-50",
     accent: "#e8a87c",
   },
@@ -77,7 +77,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Puzzles",
     price: 45,
     slogan: "Where every piece brings the wild to life.",
-    image: "/Shop_Puzzle_In_the_Zoo_Edition.png",
+    image: "/Touta-s-World/Shop_Puzzle_In_the_Zoo_Edition.png",
     bg: "bg-green-50",
     accent: "#e8a87c",
   },
@@ -88,7 +88,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Pins",
     price: 15,
     slogan: "Where every story begins with a spark.",
-    image: "/Shop_Pins_Storytelling_Magic_Pin.png",
+    image: "/Touta-s-World/Shop_Pins_Storytelling_Magic_Pin.png",
     bg: "bg-[#e8ecf3]",
     accent: "#aab5cc",
   },
@@ -98,7 +98,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Pins",
     price: 15,
     slogan: "A tiny piece of adventure from a world of ancient wonder.",
-    image: "/Shop_Pins_In_the_Pyramids_Pin.png",
+    image: "/Touta-s-World/Shop_Pins_In_the_Pyramids_Pin.png",
     bg: "bg-stone-100",
     accent: "#aab5cc",
   },
@@ -108,7 +108,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Pins",
     price: 15,
     slogan: "A small symbol of growing ideas and gentle care.",
-    image: "/Shop_Pins_In_the_Garden_Pin.png",
+    image: "/Touta-s-World/Shop_Pins_In_the_Garden_Pin.png",
     bg: "bg-emerald-50",
     accent: "#aab5cc",
   },
@@ -118,7 +118,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Pins",
     price: 15,
     slogan: "A little reminder that learning can be fun.",
-    image: "/Shop_Pins_In_Class_Pin.png",
+    image: "/Touta-s-World/Shop_Pins_In_Class_Pin.png",
     bg: "bg-white",
     accent: "#aab5cc",
   },
@@ -128,7 +128,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Pins",
     price: 15,
     slogan: "The magic of Touta, carried with you everywhere.",
-    image: "/Shop_Pins_Touta_Logo_Pin.png",
+    image: "/Touta-s-World/Shop_Pins_Touta_Logo_Pin.png",
     bg: "bg-stone-50",
     accent: "#aab5cc",
   },
@@ -139,7 +139,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Coloring Books",
     price: 25,
     slogan: "Create, color, and grow something beautiful.",
-    image: "/Shop_Coloring_Book_Green_Touta_Coloring_Book.png",
+    image: "/Touta-s-World/Shop_Coloring_Book_Green_Touta_Coloring_Book.png",
     bg: "bg-[#fceae7]",
     accent: "#e5b3aa",
   },
@@ -149,7 +149,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Coloring Books",
     price: 25,
     slogan: "Uncover ancient wonders, one color at a time",
-    image: "/Shop_Coloring_Book_In_the_Pyramids_Coloring_Book.png",
+    image: "/Touta-s-World/Shop_Coloring_Book_In_the_Pyramids_Coloring_Book.png",
     bg: "bg-amber-50",
     accent: "#e5b3aa",
   },
@@ -159,7 +159,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Coloring Books",
     price: 25,
     slogan: "A colorful adventure where every page meets a new friend.",
-    image: "/Shop_Coloring_Book_In_the_Zoo_Coloring_Book.png",
+    image: "/Touta-s-World/Shop_Coloring_Book_In_the_Zoo_Coloring_Book.png",
     bg: "bg-sky-50",
     accent: "#e5b3aa",
   },
@@ -169,7 +169,7 @@ const ALL_PRODUCTS: Product[] = [
     category: "Coloring Books",
     price: 25,
     slogan: "Discover the magic inside you through color and curiosity.",
-    image: "/Shop_Coloring_Book_Our_Body_Coloring_Book.png",
+    image: "/Touta-s-World/Shop_Coloring_Book_Our_Body_Coloring_Book.png",
     bg: "bg-rose-50",
     accent: "#e5b3aa",
   },
@@ -344,11 +344,11 @@ function ShopContent() {
           >
             <Image 
               src={
-                activeCategory === "Notebooks" ? "/Shop_Notebook_Touta_Edition_Notebook.png" :
-                activeCategory === "Puzzles" ? "/Shop_Puzzle_Green_Touta_Edition.png" :
-                activeCategory === "Pins" ? "/Shop_Pins_Storytelling_Magic_Pin.png" :
-                activeCategory === "Coloring Books" ? "/Shop_Coloring_Book_Green_Touta_Coloring_Book.png" :
-                "/Shop_Cover_All.png"
+                activeCategory === "Notebooks" ? "/Touta-s-World/Shop_Notebook_Touta_Edition_Notebook.png" :
+                activeCategory === "Puzzles" ? "/Touta-s-World/Shop_Puzzle_Green_Touta_Edition.png" :
+                activeCategory === "Pins" ? "/Touta-s-World/Shop_Pins_Storytelling_Magic_Pin.png" :
+                activeCategory === "Coloring Books" ? "/Touta-s-World/Shop_Coloring_Book_Green_Touta_Coloring_Book.png" :
+                "/Touta-s-World/Shop_Cover_All.png"
               }
               alt={activeCategory}
               fill
