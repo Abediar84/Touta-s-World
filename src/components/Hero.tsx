@@ -66,7 +66,7 @@ export default function Hero() {
         >
           {/* English Slogan - Far Left */}
           <div className="text-left flex-1">
-            <h1 className="font-serif text-[3.8vw] sm:text-4xl md:text-5xl lg:text-[5.2rem] font-bold text-white leading-[1] tracking-tighter drop-shadow-2xl">
+            <h1 className="font-serif text-[6vw] sm:text-4xl md:text-5xl lg:text-[5.2rem] font-bold text-white leading-[1.1] tracking-tighter drop-shadow-2xl">
               Begin your journey<br />
               with <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
             </h1>
@@ -74,7 +74,7 @@ export default function Hero() {
           
           {/* Arabic Slogan - Far Right - Minimized for Mirror Effect */}
           <div className="text-right flex-1">
-            <span className="font-hamdy text-[3.8vw] sm:text-4xl md:text-5xl lg:text-[5.2rem] text-[#c2c384] drop-shadow-[0_8px_24px_rgba(0,0,0,0.9)] leading-[1.2] block">
+            <span className="font-hamdy text-[5.5vw] sm:text-[2.1rem] md:text-5xl lg:text-[5.2rem] text-[#c2c384] drop-shadow-[0_8px_24px_rgba(0,0,0,0.9)] leading-[1.2] block">
               وهنبتدي الحدوتة
             </span>
           </div>
