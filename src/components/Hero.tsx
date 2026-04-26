@@ -74,8 +74,9 @@ export default function Hero() {
           
           {/* Arabic Slogan - Far Right */}
           <div className="text-right flex-1">
-            <span className="font-hamdy text-[4.5vw] sm:text-5xl md:text-7xl lg:text-[6.5rem] text-[#c2c384] drop-shadow-[0_8px_24px_rgba(0,0,0,0.9)] leading-none block">
-              وهنبتدي الحدوتة
+            <span className="font-hamdy text-[4.5vw] sm:text-5xl md:text-7xl lg:text-[6.5rem] text-[#c2c384] drop-shadow-[0_8px_24px_rgba(0,0,0,0.9)] leading-none flex flex-row-reverse items-center justify-end gap-x-6 md:gap-x-10">
+              <span>وهنبتدي</span>
+              <span>الحدوتة</span>
             </span>
           </div>
         </motion.div>
