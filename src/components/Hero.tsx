@@ -106,7 +106,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            Start Exploring
+            Begin your journey
             <span className="text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
           </motion.button>
         </Link>
