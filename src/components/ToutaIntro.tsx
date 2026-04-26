@@ -88,7 +88,7 @@ export default function ToutaIntro() {
             </p>
 
             <div className="pt-6">
-              <Link href="/Touta-s-World/meet-touta">
+              <Link href="/meet-touta">
                 <motion.button 
                   className="bg-[#c2c384] text-white px-12 py-5 rounded-full font-sans font-bold text-sm shadow-2xl hover:bg-[#aeb072] transition-all group relative overflow-hidden"
                   whileHover={{ scale: 1.05 }}
