@@ -156,8 +156,8 @@ export default function TeamPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-               <div className="relative aspect-video w-full mb-8">
-                  <Image src="/Touta-s-World/touta_team_kids.svg" alt="Mission" fill className="object-contain" />
+               <div className="relative aspect-video w-full mb-8 rounded-3xl overflow-hidden shadow-lg">
+                  <Image src="/Touta-s-World/Team_Creativity_in_Motion.jpeg" alt="Creativity in Motion" fill className="object-cover" />
                </div>
                <div className="text-center italic text-stone-400 font-sans text-sm tracking-widest uppercase">
                   Creativity in Motion
