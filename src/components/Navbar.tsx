@@ -121,7 +121,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: cinemaEase }}
-            className="fixed top-0 left-0 right-0 z-40 pt-28 pb-10 px-8 bg-stone-950/95 backdrop-blur-xl shadow-2xl flex flex-col gap-6 lg:hidden"
+            className="fixed top-0 left-0 right-0 z-40 pt-36 pb-10 px-8 bg-stone-950/95 backdrop-blur-xl shadow-2xl flex flex-col gap-6 lg:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.div

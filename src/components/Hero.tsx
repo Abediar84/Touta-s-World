@@ -30,7 +30,7 @@ export default function Hero() {
             src="/Touta-s-World/hero-pyramids.png"
             fill
             priority
-            className="object-cover opacity-80"
+            className="object-cover object-[center_30%] opacity-80"
             style={{ color: "transparent" }}
           />
         </motion.div>
@@ -64,58 +64,60 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: cinemaEase }}
         >
-          <h1 className="font-serif text-[6vw] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter text-left">
+          <h1 className="font-serif text-[6.5vw] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter text-left">
             Begin your journey<br />
             with{" "}
             <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
           </h1>
           
           <div className="text-right">
-            <span className="font-hamdy text-[6vw] sm:text-4xl md:text-6xl lg:text-7xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
+            <span className="font-hamdy text-[8.5vw] sm:text-5xl md:text-7xl lg:text-8xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
               وهنبتدي الحدوتة
             </span>
           </div>
         </motion.div>
 
-        {/* Sub-text */}
-        <motion.p
-          className="font-sans text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed font-light"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.65, ease: cinemaEase }}
-        >
-          A curated digital sanctuary where Egyptian heritage meets modern curiosity.
-          We craft experiences that invite children to explore the echoes of the past
-          through the lens of wonder.
-        </motion.p>
+        <div className="flex flex-col items-center mt-10 md:mt-24 gap-8">
+          {/* Sub-text */}
+          <motion.p
+            className="font-sans text-lg md:text-xl text-white max-w-2xl leading-relaxed font-light bg-black/40 backdrop-blur-md px-8 py-5 rounded-2xl border border-white/10 shadow-2xl text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.65, ease: cinemaEase }}
+          >
+            A curated digital sanctuary where Egyptian heritage meets modern curiosity.
+            We craft experiences that invite children to explore the echoes of the past
+            through the lens of wonder.
+          </motion.p>
 
-        {/* CTA */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center gap-4 mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9, ease: cinemaEase }}
-        >
-          <Link href="/meet-touta">
-            <motion.button
-              className="bg-[#e27d60] text-white px-12 py-5 rounded-full font-sans font-bold text-sm hover:bg-[#c96a4e] transition-colors duration-500 group flex items-center gap-3 shadow-[0_20px_50px_rgba(226,125,96,0.35)]"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Start Exploring
-              <span className="text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </motion.button>
-          </Link>
-          <Link href="/shop">
-            <motion.button
-              className="border border-white/30 text-white/80 px-10 py-5 rounded-full font-sans font-semibold text-sm hover:border-white hover:text-white transition-all duration-400 backdrop-blur-sm"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              View Collection
-            </motion.button>
-          </Link>
-        </motion.div>
+          {/* CTA */}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9, ease: cinemaEase }}
+          >
+            <Link href="/meet-touta">
+              <motion.button
+                className="bg-[#e27d60] text-white px-12 py-5 rounded-full font-sans font-bold text-sm hover:bg-[#c96a4e] transition-colors duration-500 group flex items-center gap-3 shadow-[0_20px_50px_rgba(226,125,96,0.35)]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Start Exploring
+                <span className="text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </motion.button>
+            </Link>
+            <Link href="/shop">
+              <motion.button
+                className="border border-white/30 text-white/80 px-10 py-5 rounded-full font-sans font-semibold text-sm hover:border-white hover:text-white transition-all duration-400 backdrop-blur-sm bg-black/20"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                View Collection
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* ── Scroll indicator ── */}
