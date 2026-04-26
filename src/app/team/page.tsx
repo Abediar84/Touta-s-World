@@ -10,10 +10,23 @@ import BrandFooter from "@/components/BrandFooter";
 const cinemaEase = [0.16, 1, 0.3, 1] as const;
 
 const TEAM_MEMBERS = [
-  "Tasneem", "Jana", "Malak el gendy", "Fares", "Youssef arafa", 
-  "Habiba (toya)", "Jessie", "Rossete", "Nour mohamed", "Rawan", 
-  "Raneem", "Malak serry", "Shahd", "Nour mashhour", "Mohamed", 
-  "Mohamed", "Nourine"
+  { name: "Tasneem", image: "/Touta-s-World/Team_Tasneem.png" },
+  { name: "Jana", image: "/Touta-s-World/Team_Jana.png" },
+  { name: "Malak El Gendy", image: "/Touta-s-World/Team_Malak_El_Gendy.png" },
+  { name: "Fares", image: "/Touta-s-World/Team_Fares.png" },
+  { name: "Youssef Arafa", image: "/Touta-s-World/Team_Youssef_arafa.png" },
+  { name: "Habiba (Toya)", image: "/Touta-s-World/Team_Habiba.png" },
+  { name: "Jessie", image: "/Touta-s-World/Team_Jessie.png" },
+  { name: "Rosette", image: "/Touta-s-World/Team_Rosette.png" },
+  { name: "Nour Al Saqaf", image: "/Touta-s-World/Team_Nour_Al_Saqaf.png" },
+  { name: "Rawan", image: "/Touta-s-World/Team_Rawan.png" },
+  { name: "Raneem", image: "/Touta-s-World/Team_Raneem.png" },
+  { name: "Malak Serry", image: "/Touta-s-World/Team_Malak_Serry.png" },
+  { name: "Shahd", image: "/Touta-s-World/Team_Shahd_Ahmed.png" },
+  { name: "Nour Hassan", image: "/Touta-s-World/Team_Nour_Hassan.png" },
+  { name: "Mohamed Abo Elenien", image: "/Touta-s-World/Team_Mohamed_Abo_Elenien.png" },
+  { name: "Mohamed Ahmed", image: "/Touta-s-World/Team_Mohamed_Ahmed.png" },
+  { name: "Nourine", image: "/Touta-s-World/Team_Nourine.png" }
 ];
 
 export default function TeamPage() {
@@ -173,23 +186,28 @@ export default function TeamPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {TEAM_MEMBERS.map((name, i) => (
+            {TEAM_MEMBERS.map((member, i) => (
               <motion.div
-                key={name + i}
+                key={member.name + i}
                 className="group relative aspect-[3/4] bg-stone-800/50 rounded-2xl border border-stone-800 overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <div className="absolute inset-0 flex items-center justify-center opacity-20 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
-                   <Image src="/Touta-s-World/mascot-laying.png" alt={name} fill className="object-cover scale-125" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700">
+                   <Image 
+                     src={member.image} 
+                     alt={member.name} 
+                     fill 
+                     className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <span className="text-white/50 font-sans text-xs tracking-widest mb-1 block">{(i + 1).toString().padStart(2, '0')}</span>
-                    <span className="text-white font-serif text-lg">{name}</span>
-                    <span className="text-[#c2c384] font-sans text-[10px] uppercase tracking-widest">2026 CIC</span>
+                    <span className="text-white font-serif text-lg leading-tight mb-1">{member.name}</span>
+                    <span className="text-[#c2c384] font-sans text-[10px] uppercase tracking-[0.2em] font-bold">2026 CIC</span>
                 </div>
               </motion.div>
             ))}
