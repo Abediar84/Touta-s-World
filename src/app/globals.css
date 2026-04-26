@@ -28,6 +28,10 @@
     font-family: var(--font-arabic), "Noto Sans Arabic", sans-serif;
     font-weight: 700;
   }
+  .font-hamdy {
+    font-family: var(--font-hamdy), "Noto Sans Arabic", sans-serif;
+    font-weight: 700;
+  }
 }
 
 .font-brand {

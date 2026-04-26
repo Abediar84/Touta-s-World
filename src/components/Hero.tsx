@@ -30,51 +30,49 @@ export default function Hero() {
             src="/Touta-s-World/hero-pyramids.png"
             fill
             priority
-            className="object-cover opacity-50"
+            className="object-cover opacity-80"
             style={{ color: "transparent" }}
           />
         </motion.div>
-        {/* dark stone overlay — exact mix-blend as reference */}
-        <div className="absolute inset-0 bg-stone-900/40 mix-blend-multiply" />
+        {/* lighter stone overlay for more clarity */}
+        <div className="absolute inset-0 bg-stone-900/20 mix-blend-multiply" />
         {/* gradient fade to bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-stone-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-950/70" />
       </div>
 
       {/* ── Hero Content ── */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 flex flex-col items-center gap-10 max-w-6xl px-6 w-full"
+        className="relative z-10 flex flex-col items-center gap-10 w-full px-2 sm:px-6 md:px-12 lg:px-16"
       >
         {/* Eyebrow label */}
         <motion.span
-          className="inline-flex items-center gap-4 text-white/80 font-sans font-bold uppercase tracking-[0.5em] text-[10px] md:text-[11px]"
+          className="inline-flex items-center gap-4 text-white font-sans font-bold uppercase tracking-[0.5em] text-[10px] md:text-[11px]"
           initial={{ letterSpacing: "1em", opacity: 0 }}
           animate={{ letterSpacing: "0.5em", opacity: 1 }}
           transition={{ duration: 1.6, delay: 0.2, ease: cinemaEase }}
         >
-          <span className="w-10 h-[1px] bg-white/40" />
+          <span className="w-10 h-[1px] bg-white/60" />
           WELCOME TO THE MAGIC
-          <span className="w-10 h-[1px] bg-white/40" />
+          <span className="w-10 h-[1px] bg-white/60" />
         </motion.span>
 
-        {/* Slogans Side by Side */}
+        {/* Slogans Side by Side on Far Ends */}
         <motion.div 
-          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full"
+          className="flex flex-row items-center justify-between w-full"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: cinemaEase }}
         >
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tighter text-center md:text-right flex-1">
+          <h1 className="font-serif text-[6vw] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter text-left">
             Begin your journey<br />
             with{" "}
             <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
           </h1>
           
-          <div className="hidden md:block w-[2px] h-24 bg-white/30" />
-          
-          <div className="flex-1 text-center md:text-left">
-            <span className="font-arabic font-bold text-5xl md:text-7xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-              وهنبتدي الحدودة
+          <div className="text-right">
+            <span className="font-hamdy text-[6vw] sm:text-4xl md:text-6xl lg:text-7xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
+              وهنبتدي الحدوتة
             </span>
           </div>
         </motion.div>

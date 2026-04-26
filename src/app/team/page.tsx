@@ -45,8 +45,8 @@ export default function TeamPage() {
             priority
           />
           {/* Grainy Texture Overlay */}
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px] mix-blend-multiply opacity-50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa] via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa] via-transparent to-transparent" />
         </motion.div>
 
         <motion.div

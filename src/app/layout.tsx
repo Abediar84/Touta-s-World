@@ -14,6 +14,12 @@ const haveHeart = localFont({
   display: 'swap',
 });
 
+const hamdyV2 = localFont({
+  src: '../../public/fonts/Hamdy-V2-Bold.ttf',
+  variable: '--font-hamdy',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://toutasworld.com'),
   title: "Touta's World | A Magical Learning Experience",
@@ -48,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSerif.variable} ${manrope.variable} ${dancing.variable} ${haveHeart.variable} ${notoArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen`}>
+      <body className={`${notoSerif.variable} ${manrope.variable} ${dancing.variable} ${haveHeart.variable} ${notoArabic.variable} ${hamdyV2.variable} font-sans antialiased bg-background text-foreground min-h-screen`}>
         {children}
       </body>
     </html>
