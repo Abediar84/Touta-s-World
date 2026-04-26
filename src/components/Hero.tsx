@@ -72,7 +72,7 @@ export default function Hero() {
           </div>
           
           <div className="flex-1 text-right">
-            <span className="font-hamdy text-[6.5vw] sm:text-5xl md:text-7xl lg:text-8xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
+            <span className="font-hamdy text-[5vw] sm:text-5xl md:text-7xl lg:text-8xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
               وهنبتدي الحدوتة
             </span>
           </div>
@@ -90,45 +90,35 @@ export default function Hero() {
             We craft experiences that invite children to explore the echoes of the past
             through the lens of wonder.
           </motion.p>
-
-          {/* CTA */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9, ease: cinemaEase }}
-          >
-            <Link href="/meet-touta">
-              <motion.button
-                className="bg-[#e27d60] text-white px-12 py-5 rounded-full font-sans font-bold text-sm hover:bg-[#c96a4e] transition-colors duration-500 group flex items-center gap-3 shadow-[0_20px_50px_rgba(226,125,96,0.35)]"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                Start Exploring
-                <span className="text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
-              </motion.button>
-            </Link>
-            <Link href="/shop">
-              <motion.button
-                className="border border-white/30 text-white/80 px-10 py-5 rounded-full font-sans font-semibold text-sm hover:border-white hover:text-white transition-all duration-400 backdrop-blur-sm bg-black/20"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                View Collection
-              </motion.button>
-            </Link>
-          </motion.div>
         </div>
       </motion.div>
 
-      {/* ── Scroll indicator ── */}
+      {/* ── CTA at Bottom ── */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-8 sm:bottom-12 left-0 right-0 z-20 flex flex-col sm:flex-row justify-center items-center gap-4 px-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.9, ease: cinemaEase }}
       >
-        <span className="text-white/40 font-sans text-[9px] tracking-[0.4em] uppercase">Scroll</span>
-        <div className="w-[1px] h-14 bg-gradient-to-b from-white/40 to-transparent" />
+        <Link href="/meet-touta">
+          <motion.button
+            className="bg-[#e27d60] text-white px-10 py-4 sm:px-12 sm:py-5 rounded-full font-sans font-bold text-sm hover:bg-[#c96a4e] transition-colors duration-500 group flex items-center gap-3 shadow-[0_20px_50px_rgba(226,125,96,0.35)]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Start Exploring
+            <span className="text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
+          </motion.button>
+        </Link>
+        <Link href="/shop">
+          <motion.button
+            className="border border-white/30 text-white/80 px-8 py-4 sm:px-10 sm:py-5 rounded-full font-sans font-semibold text-sm hover:border-white hover:text-white transition-all duration-400 backdrop-blur-sm bg-black/20"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            View Collection
+          </motion.button>
+        </Link>
       </motion.div>
     </section>
   );
