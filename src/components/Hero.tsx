@@ -30,7 +30,7 @@ export default function Hero() {
             src="/Touta-s-World/hero-pyramids.png"
             fill
             priority
-            className="object-cover object-[center_30%] opacity-80"
+            className="object-cover opacity-80"
             style={{ color: "transparent" }}
           />
         </motion.div>
@@ -59,19 +59,20 @@ export default function Hero() {
 
         {/* Slogans Side by Side on Far Ends */}
         <motion.div 
-          className="flex flex-row items-center justify-between w-full"
+          className="flex flex-row items-center justify-between w-full gap-4"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: cinemaEase }}
         >
-          <h1 className="font-serif text-[6.5vw] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tighter text-left">
-            Begin your journey<br />
-            with{" "}
-            <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
-          </h1>
+          <div className="flex-1 text-left">
+            <h1 className="font-serif text-[4.5vw] sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] tracking-tighter">
+              Begin your journey<br />
+              with <span className="font-brand italic text-[#e27d60] !font-normal">Touta</span>
+            </h1>
+          </div>
           
-          <div className="text-right">
-            <span className="font-hamdy text-[8.5vw] sm:text-5xl md:text-7xl lg:text-8xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
+          <div className="flex-1 text-right">
+            <span className="font-hamdy text-[6.5vw] sm:text-5xl md:text-7xl lg:text-8xl text-[#c2c384] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap">
               وهنبتدي الحدوتة
             </span>
           </div>
